@@ -1,0 +1,11 @@
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.button-row > button:not(:last-child) {
+  margin-right: 0.5rem;
+}
