@@ -3,7 +3,7 @@ CREATE TABLE Roles (
     RolId INT PRIMARY KEY IDENTITY(1,1),
     NombreRol NVARCHAR(50) NOT NULL UNIQUE,
     Descripcion NVARCHAR(200),
-    FechaCreacion DATETIME DEFAULT GETDATE()
+    FechaCreacion DATETIME DEFAULT GETDATE() not null
 );
 
 -- Tabla de Vista
@@ -47,20 +47,14 @@ create table RolesPermisos (
 
 -- Tabla de Usuarios
 CREATE TABLE Usuarios (
-    UsuarioId INT PRIMARY KEY IDENTITY(1,1),
-    RolID INT NOT NULL DEFAULT 2, -- Por defecto Usuario
-    Nombre NVARCHAR(100) NOT NULL,
-    Apellido NVARCHAR(100) NOT NULL,
+    UsuarioId nvarchar(450) not null,
+    RolId INT NOT NULL DEFAULT 2, -- Por defecto Usuario
+    NombreCompleto NVARCHAR(100) NOT NULL,
     Email NVARCHAR(255) NOT NULL UNIQUE,
-    Telefono NVARCHAR(20),
-    PasswordHash NVARCHAR(255) NOT NULL,
     FechaRegistro DATETIME DEFAULT GETDATE(),
     FechaBaja DATETIME NULL,
     Activo BIT DEFAULT 1,
-    UsuarioBajaID INT NULL, -- Usuario admin que dio de baja
-    MotivoBaja NVARCHAR(500) NULL,
     CONSTRAINT FK_Usuarios_Rol FOREIGN KEY (RolId) REFERENCES Roles(RolId),
-    CONSTRAINT FK_Usuarios_UsuarioBaja FOREIGN KEY (UsuarioBajaId) REFERENCES Usuarios(UsuarioId),
     CONSTRAINT CK_Email CHECK (Email LIKE '%@%.%')
 );
 
@@ -74,8 +68,7 @@ CREATE TABLE Turnos (
     Activo BIT DEFAULT 1,
     FechaCreacion DATETIME DEFAULT GETDATE(),
     FechaModificacion DATETIME NULL,
-    UsuarioModificadorID INT NULL,
-    CONSTRAINT FK_Turnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId),
+    UsuarioModificadorID nvarchar(450) not NULL,
     CONSTRAINT CK_Turno_Horario CHECK (HoraFin > HoraInicio)
 );
 
@@ -87,11 +80,10 @@ CREATE TABLE HistorialTurnos (
     HoraFinAnterior TIME,
     HoraInicioNueva TIME NOT NULL,
     HoraFinNueva TIME NOT NULL,
-    UsuarioModificadorID INT NOT NULL,
+    UsuarioModificadorId nvarchar(450) NULL,
     FechaCambio DATETIME DEFAULT GETDATE(),
     Motivo NVARCHAR(500),
     CONSTRAINT FK_HistorialTurnos_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
-    CONSTRAINT FK_HistorialTurnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId)
 );
 
 -- Tabla del Salón
@@ -99,8 +91,6 @@ CREATE TABLE Salon (
     SalonId INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL,
     Capacidad INT NOT NULL,
-    Descripcion NVARCHAR(500),
-    PrecioPorTurno DECIMAL(10,2),
     Activo BIT DEFAULT 1,
     CONSTRAINT CK_Capacidad CHECK (Capacidad > 0)
 );
@@ -115,7 +105,7 @@ CREATE TABLE EstadosReserva (
 -- Tabla de Reservas
 CREATE TABLE Reservas (
     ReservaId INT PRIMARY KEY IDENTITY(1,1),
-    UsuarioId INT NOT NULL,
+    UsuarioId nvarchar(450) NOT NULL,
     SalonId INT NOT NULL,
     TurnoId INT NOT NULL,
     FechaReserva DATE NOT NULL,
@@ -123,7 +113,6 @@ CREATE TABLE Reservas (
     EstadoId INT NOT NULL,
     CantidadPersonas INT,
     Observaciones NVARCHAR(500),
-    CONSTRAINT FK_Reservas_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuarios(UsuarioId),
     CONSTRAINT FK_Reservas_Salon FOREIGN KEY (SalonId) REFERENCES Salon(SalonId),
     CONSTRAINT FK_Reservas_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_Reservas_Estado FOREIGN KEY (EstadoId) REFERENCES EstadosReserva(EstadoId),
@@ -146,25 +135,8 @@ CREATE TABLE HistorialEstadoReserva (
     CONSTRAINT FK_Historial_EstadoNuevo FOREIGN KEY (EstadoNuevo) REFERENCES EstadosReserva(EstadoID)
 );
 
--- Tabla de Auditoría de Acciones Administrativas
-CREATE TABLE AuditoriaAdmin (
-    AuditoriaId INT PRIMARY KEY IDENTITY(1,1),
-    UsuarioAdminId INT NOT NULL,
-    TipoAccion NVARCHAR(100) NOT NULL, -- 'BAJA_USUARIO', 'EDITAR_TURNO', etc.
-    TablaAfectada NVARCHAR(50),
-    RegistroAfectadoId INT,
-    ValoresAnteriores NVARCHAR(MAX),
-    ValoresNuevos NVARCHAR(MAX),
-    FechaAccion DATETIME DEFAULT GETDATE(),
-    Descripcion NVARCHAR(500),
-    CONSTRAINT FK_Auditoria_Admin FOREIGN KEY (UsuarioAdminId) REFERENCES Usuarios(UsuarioId)
-);
-
-CREATE INDEX IX_Reservas_Usuario ON Reservas(UsuarioId);
 CREATE INDEX IX_Reservas_Fecha ON Reservas(FechaReserva);
 CREATE INDEX IX_Reservas_Estado ON Reservas(EstadoId);
 CREATE INDEX IX_Usuarios_Email ON Usuarios(Email);
 CREATE INDEX IX_Usuarios_Activo ON Usuarios(Activo);
 CREATE INDEX IX_Usuarios_Rol ON Usuarios(RolId);
-CREATE INDEX IX_AuditoriaAdmin_Fecha ON AuditoriaAdmin(FechaAccion);
-CREATE INDEX IX_AuditoriaAdmin_Usuario ON AuditoriaAdmin(UsuarioAdminId);

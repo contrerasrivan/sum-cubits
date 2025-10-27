@@ -1,6 +1,7 @@
 ﻿namespace Sum_Cubits_Application.Features.Users
 {
-    internal class QueryUser
+    public class QueryUser
     {
+
     }
 }
