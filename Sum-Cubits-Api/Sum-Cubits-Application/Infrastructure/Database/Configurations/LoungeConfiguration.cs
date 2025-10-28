@@ -10,6 +10,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         {
             builder.ToTable("Salones");
             builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id)
+                .HasColumnName("SalonId");
             builder.Property(e => e.NombreSalon)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -17,9 +19,6 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .IsRequired();
             builder.Property(e => e.Descripcion)
                 .HasMaxLength(500);
-            builder.Property(e => e.PrecioPorturno)
-                .IsRequired()
-                .HasColumnType("decimal(10,2)");
             builder.Property(e => e.Activo)
                 .IsRequired();
         }

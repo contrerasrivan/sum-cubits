@@ -11,6 +11,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         {
             builder.ToTable("Permissions");
             builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id)
+                .HasColumnName("PermisoId");
             builder.Property(p => p.Accion)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -19,6 +21,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .HasColumnName("Fecha_Alta");
             builder.Property(p => p.Updated)
                 .HasColumnName("Fecha_Modificacion");
+            builder.Property(p => p.Updated)
+                .HasColumnName("Fecha_Baja");
         }
     }
 }

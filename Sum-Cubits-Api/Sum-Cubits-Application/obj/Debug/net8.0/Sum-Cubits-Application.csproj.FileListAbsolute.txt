@@ -1,0 +1,13 @@
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\bin\Debug\net8.0\Sum-Cubits-Application.deps.json
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\bin\Debug\net8.0\Sum-Cubits-Application.dll
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\bin\Debug\net8.0\Sum-Cubits-Application.pdb
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.csproj.AssemblyReference.cache
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.AssemblyInfoInputs.cache
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.AssemblyInfo.cs
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.csproj.CoreCompileInputs.cache
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.sourcelink.json
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.dll
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\refint\Sum-Cubits-Application.dll
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\Sum-Cubits-Application.pdb
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Application\obj\Debug\net8.0\ref\Sum-Cubits-Application.dll
