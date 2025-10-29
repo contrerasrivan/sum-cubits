@@ -1,21 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Sum_Cubits_Application.Interfaces;
+using Sum_Cubits_Application.Infrastructure;
+using Sum_Cubits_Application.Infrastructure.Services;
 using System.Security.Claims;
 
 namespace Sum_Cubits_Api.Authorization
 {
     public class AuthorizationHandler : IAuthorizationHandler
     {
-        private readonly IUserService _userService;
-        private readonly IPermissionService _permissionService;
+        private readonly UserService userService;
+        private readonly PermissionService permissionService;
 
-        public AuthorizationHandler(IUserService userService, IPermissionService permissionService)
-        {
-            _userService = userService;
-            _permissionService = permissionService;
-        }
 
         public async Task HandleAsync(AuthorizationHandlerContext context)
         {
@@ -31,7 +27,7 @@ namespace Sum_Cubits_Api.Authorization
             var action = GetRequestAction(context);
             var controller = GetRequestController(context);
 
-            return await _permissionService.CheckPermission(roleId, action, controller);
+            return await permissionService.CheckPermission(roleId, action, controller);
         }
 
         private static bool IsAuthenticated(AuthorizationHandlerContext context)
@@ -53,7 +49,7 @@ namespace Sum_Cubits_Api.Authorization
         {
             var userEmail = context.User.FindFirstValue(ClaimTypes.Email);
             var userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await _userService.GetRoleId(userId, userEmail) ?? throw new Exception();
+            return await userService.GetRoleId(userId, userEmail) ?? throw new Exception();
         }
 
 

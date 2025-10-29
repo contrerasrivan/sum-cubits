@@ -1,13 +1,13 @@
 ﻿
 using Sum_Cubits_Application.Infrastructure.Database;
 
-namespace Sum_Cubits_Application.Features.Permissions
+namespace Sum_Cubits_Application.Features.Record
 {
-    public class QueryPermission
+    public class QueryRecord
     {
         private readonly SqlServerDbContext _dbContext;
 
-        public QueryPermission(
+        public QueryRecord(
             SqlServerDbContext dbContext)
         {
             _dbContext = dbContext;

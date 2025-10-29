@@ -1,7 +1,6 @@
 using Scalar.AspNetCore;
 using Sum_Cubits_Api.Installers;
 using Sum_Cubits_Application;
-using Sum_Cubits_Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Default");
@@ -16,7 +15,6 @@ builder.Services.InstallCors();
 builder.Services.InstallOpenApi();
 builder.Services.AddMemoryCache();
 builder.Services.AddOptions<ScalarOptions>().BindConfiguration("Scalar");
-builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.InstallAuthentication(authAudience, authAuthority);
 builder.Services.InstallAuthorization();

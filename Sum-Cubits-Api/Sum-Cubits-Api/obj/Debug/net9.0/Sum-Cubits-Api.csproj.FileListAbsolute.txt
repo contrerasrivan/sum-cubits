@@ -170,5 +170,5 @@ D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\refint\Sum-Cubi
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\Sum-Cubits-Api.pdb
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\Sum-Cubits-Api.genruntimeconfig.cache
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\ref\Sum-Cubits-Api.dll
-D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\MediatR.dll
-D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\MediatR.Contracts.dll
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\FluentValidation.dll
+D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll

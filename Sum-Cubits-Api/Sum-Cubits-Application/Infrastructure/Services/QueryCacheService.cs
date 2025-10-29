@@ -1,14 +1,13 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using Sum_Cubits_Application.Application.Interfaces;
+﻿
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Sum_Cubits_Application.Infrastructure.Services
 {
-    public class CacheService : ICacheService
+    public class QueryCacheService
     {
         private readonly IMemoryCache _memoryCache;
 
-        public CacheService(
-            IMemoryCache memoryCache)
+        public QueryCacheService(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
         }
@@ -34,3 +33,4 @@ namespace Sum_Cubits_Application.Infrastructure.Services
             _memoryCache.Remove(key);
         }
     }
+}

@@ -1,21 +1,13 @@
-﻿using Sum_Cubits_Application.Application.Interfaces;
-using Sum_Cubits_Application.Features.Permissions;
-using Sum_Cubits_Application.Interfaces;
+﻿using Sum_Cubits_Application.Features.Permissions;
+using Sum_Cubits_Application.Features.Roles;
+using Sum_Cubits_Application.Infrastructure.Services;
 
 namespace Sum_Cubits_Application.Infrastructure
 {
-    public class PermissionService : IPermissionService
+    public class PermissionService 
     {
-        private readonly ICacheService _cacheService;
-        private readonly IRoleRepository _roleRepository;
-
-        public PermissionService(
-            ICacheService cacheService,
-            IRoleRepository roleRepository)
-        {
-            _cacheService = cacheService;
-            _roleRepository = roleRepository;
-        }
+        private readonly QueryCacheService _queryCacheService;
+        private readonly QueryRole _queryRole;
 
         public async Task<bool> CheckPermission(int roleId, string action, string controller)
         {
@@ -31,7 +23,7 @@ namespace Sum_Cubits_Application.Infrastructure
         public void RemovePermissionListFromCache(int roleId)
         {
             var cacheKey = GetRolePermissionKey(roleId);
-            _cacheService.Remove(cacheKey);
+            _queryCacheService.Remove(cacheKey);
         }
         public void RecomePermissionListFromCache(int roleId)
         {
@@ -42,19 +34,20 @@ namespace Sum_Cubits_Application.Infrastructure
         {
             var cacheKey = GetRolePermissionKey(roleId);
 
-            if (_cacheService.Exists(cacheKey))
-                return _cacheService.Get<List<Permission>>(cacheKey);
+            if (_queryCacheService.Exists(cacheKey))
+                return _queryCacheService.Get<List<Permission>>(cacheKey);
 
-            var rolePermissionList = await _roleRepository.GetRolePermissionList(roleId);
+            var rolePermissionList = await _queryRole.GetRolePermissionList(roleId);
 
             var permissionList = rolePermissionList
                 .Select(rp => rp.Permission!)
                 .ToList();
 
-            _cacheService.Set(cacheKey, permissionList);
+            _queryCacheService.Set(cacheKey, permissionList);
 
             return permissionList;
         }
 
         private static string GetRolePermissionKey(int roleId) => $"ROLE_{roleId}_PERMISSION";
     }
+}
