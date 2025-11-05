@@ -1,0 +1,239 @@
+.reservas-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.calendario-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Estilos personalizados de FullCalendar */
+:deep(.fc) {
+  font-family: 'Inter', sans-serif;
+}
+
+:deep(.fc-toolbar-title) {
+  font-size: 1.5rem !important;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+:deep(.fc-button) {
+  background: #3498db !important;
+  border-color: #3498db !important;
+  text-transform: capitalize;
+}
+
+:deep(.fc-button:hover) {
+  background: #2980b9 !important;
+  border-color: #2980b9 !important;
+}
+
+:deep(.fc-daygrid-day:hover) {
+  cursor: pointer;
+  background: rgba(52, 152, 219, 0.05);
+}
+
+:deep(.fc-day-past) {
+  background: #f8f9fa;
+  opacity: 0.6;
+}
+
+:deep(.fc-day-past:hover) {
+  cursor: not-allowed !important;
+  background: #f8f9fa !important;
+}
+
+:deep(.fc-daygrid-day-number) {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px;
+}
+
+:deep(.fc-daygrid-day-events) {
+  display: none;
+}
+
+/* Colores de disponibilidad */
+:deep(.evento-disponible) {
+  background-color: rgba(39, 174, 96, 0.3) !important;
+}
+
+:deep(.evento-parcial) {
+  background-color: rgba(243, 156, 18, 0.3) !important;
+}
+
+:deep(.evento-completo) {
+  background-color: rgba(231, 76, 60, 0.3) !important;
+}
+
+/* Modal */
+.modal-content {
+  padding: 10px 0;
+}
+
+.fecha-seleccionada {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.fecha-seleccionada i {
+  color: #3498db;
+  font-size: 1.3rem;
+}
+
+.estado-dia {
+  margin-bottom: 15px;
+}
+
+.loading-turnos {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lista-turnos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.turno-card {
+  border: 2px solid #ecf0f1;
+  border-radius: 12px;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+.turno-card:not(.ocupado):hover {
+  border-color: #3498db;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.turno-card.ocupado {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+.turno-header {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.turno-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.turno-info {
+  flex: 1;
+}
+
+.turno-info h4 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.horario {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.descripcion {
+  color: #95a5a6;
+  font-size: 0.85rem;
+  margin: 5px 0 0 0;
+}
+
+.turno-accion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.estado-ocupado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.estado-ocupado small {
+  color: #95a5a6;
+  font-size: 0.85rem;
+}
+
+.btn-reservar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.btn-reservar:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+}
+
+/* Leyenda */
+.leyenda-card {
+  margin-top: 20px;
+}
+
+.leyenda-card h4 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+}
+
+.leyenda-items {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-indicator {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 2px solid #ecf0f1;
+}
+
+.color-indicator.disponible {
+  background: rgba(39, 174, 96, 0.3);
+  border-color: #27ae60;
+}
+
+.color-indicator.parcial {
+  background: rgba(243, 156, 18, 0.3);
+  border-color: #f39c12;
+}
+
+.color-indicator.completo {
+  background: rgba(231, 76, 60, 0.3);
+  border-color: #e74c3c;
+}
