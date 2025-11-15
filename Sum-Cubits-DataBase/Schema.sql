@@ -45,16 +45,27 @@ create table RolesPermisos (
 	constraint UQ_RolPermiso Unique (RolId, PermisoId)
 );
 
+-- Tabla de Roles
+CREATE TABLE Roles (
+    RolId INT PRIMARY KEY IDENTITY(1,1),
+    NombreRol NVARCHAR(50) NOT NULL UNIQUE,
+    FechaCreacion DATETIME DEFAULT GETDATE(),
+	FechaBaja DATETIME DEFAULT getdate()
+);
+
 -- Tabla de Usuarios
 CREATE TABLE Usuarios (
-    UsuarioId nvarchar(450) not null,
+    UsuarioId INT PRIMARY KEY IDENTITY(1,1),
     RolId INT NOT NULL DEFAULT 2, -- Por defecto Usuario
-    NombreCompleto NVARCHAR(100) NOT NULL,
+    FullName NVARCHAR(100) NOT NULL,
     Email NVARCHAR(255) NOT NULL UNIQUE,
+    Telefono NVARCHAR(20),
     FechaRegistro DATETIME DEFAULT GETDATE(),
     FechaBaja DATETIME NULL,
     Activo BIT DEFAULT 1,
+    UsuarioBajaID INT NULL, -- Usuario admin que dio de baja
     CONSTRAINT FK_Usuarios_Rol FOREIGN KEY (RolId) REFERENCES Roles(RolId),
+    CONSTRAINT FK_Usuarios_UsuarioBaja FOREIGN KEY (UsuarioBajaId) REFERENCES Usuarios(UsuarioId),
     CONSTRAINT CK_Email CHECK (Email LIKE '%@%.%')
 );
 
@@ -68,7 +79,8 @@ CREATE TABLE Turnos (
     Activo BIT DEFAULT 1,
     FechaCreacion DATETIME DEFAULT GETDATE(),
     FechaModificacion DATETIME NULL,
-    UsuarioModificadorID nvarchar(450) not NULL,
+    UsuarioModificadorId INT NULL,
+    CONSTRAINT FK_Turnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId),
     CONSTRAINT CK_Turno_Horario CHECK (HoraFin > HoraInicio)
 );
 
@@ -80,17 +92,19 @@ CREATE TABLE HistorialTurnos (
     HoraFinAnterior TIME,
     HoraInicioNueva TIME NOT NULL,
     HoraFinNueva TIME NOT NULL,
-    UsuarioModificadorId nvarchar(450) NULL,
+    UsuarioModificadorId INT NOT NULL,
     FechaCambio DATETIME DEFAULT GETDATE(),
     Motivo NVARCHAR(500),
     CONSTRAINT FK_HistorialTurnos_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
+    CONSTRAINT FK_HistorialTurnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId)
 );
 
 -- Tabla del Salón
-CREATE TABLE Salon (
+CREATE TABLE Salones (
     SalonId INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL,
     Capacidad INT NOT NULL,
+    Descripcion NVARCHAR(500),
     Activo BIT DEFAULT 1,
     CONSTRAINT CK_Capacidad CHECK (Capacidad > 0)
 );
@@ -105,7 +119,7 @@ CREATE TABLE EstadosReserva (
 -- Tabla de Reservas
 CREATE TABLE Reservas (
     ReservaId INT PRIMARY KEY IDENTITY(1,1),
-    UsuarioId nvarchar(450) NOT NULL,
+    UsuarioId INT NOT NULL,
     SalonId INT NOT NULL,
     TurnoId INT NOT NULL,
     FechaReserva DATE NOT NULL,
@@ -113,6 +127,7 @@ CREATE TABLE Reservas (
     EstadoId INT NOT NULL,
     CantidadPersonas INT,
     Observaciones NVARCHAR(500),
+    CONSTRAINT FK_Reservas_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuarios(UsuarioId),
     CONSTRAINT FK_Reservas_Salon FOREIGN KEY (SalonId) REFERENCES Salon(SalonId),
     CONSTRAINT FK_Reservas_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_Reservas_Estado FOREIGN KEY (EstadoId) REFERENCES EstadosReserva(EstadoId),
@@ -131,12 +146,87 @@ CREATE TABLE HistorialEstadoReserva (
     UsuarioModificador INT,
     Comentario NVARCHAR(500),
     CONSTRAINT FK_Historial_Reserva FOREIGN KEY (ReservaId) REFERENCES Reservas(ReservaId),
-    CONSTRAINT FK_Historial_EstadoAnterior FOREIGN KEY (EstadoAnterior) REFERENCES EstadosReserva(EstadoID),
-    CONSTRAINT FK_Historial_EstadoNuevo FOREIGN KEY (EstadoNuevo) REFERENCES EstadosReserva(EstadoID)
+    CONSTRAINT FK_Historial_EstadoAnterior FOREIGN KEY (EstadoAnterior) REFERENCES EstadosReserva(EstadoId),
+    CONSTRAINT FK_Historial_EstadoNuevo FOREIGN KEY (EstadoNuevo) REFERENCES EstadosReserva(EstadoId)
 );
 
+-- =============================================
+-- ÍNDICES PARA OPTIMIZACIÓN
+-- =============================================
+
+CREATE INDEX IX_Reservas_Usuario ON Reservas(UsuarioId);
 CREATE INDEX IX_Reservas_Fecha ON Reservas(FechaReserva);
 CREATE INDEX IX_Reservas_Estado ON Reservas(EstadoId);
 CREATE INDEX IX_Usuarios_Email ON Usuarios(Email);
 CREATE INDEX IX_Usuarios_Activo ON Usuarios(Activo);
 CREATE INDEX IX_Usuarios_Rol ON Usuarios(RolId);
+
+-- =============================================
+-- Insercción de Roles
+-- =============================================
+insert into Roles (NombreRol,FechaCreacion) values ('Admin', getdate())
+insert into Roles (NombreRol,FechaCreacion) values ('Usuario', getdate())
+
+-- =============================================
+-- Insercción de Estados
+-- =============================================
+INSERT into EstadosReserva (NombreEstado,Descripcion) VALUES ('Disponible', 'Fecha y Salón disponible con todos los turnos habilitados'),
+('Poco Disponible', 'Fecha y Salón con al menos 1 turno disponible'),
+('Cancelada', 'Fecha y Salón Cancelada'),
+('No Disponible', 'Fecha y Salón con todos los turnos agotados')
+('Confirmada', 'Reserva confirmada');
+
+
+-- =============================================
+-- Insercción de Turnos
+-- =============================================
+INSERT into Turnos (NombreTurno,HoraInicio,HoraFin,Descripcion,Activo,FechaCreacion) values 
+('Mañana', '00:00:00', '11:00:59', 'Turno Mañana hasta las 11:00',1,GETDATE()),
+('Mediodía', '11:01:00', '16:00:59', 'Turno Mediodía de 11:01 a 16:00',1,getdate()),
+('Tarde', '16:01:00', '20:00:59', 'Turno Tarde de 16:01 a 20:00',1,GETDATE()),
+('Noche', '20:01:00', '23:59:59', 'Turno Noche desde las 20:01',1,getdate());
+
+-- =============================================
+-- Insercción de Salón
+-- =============================================
+INSERT INTO Salones (NombreSalon, Capacidad, Descripcion, Activo) VALUES
+('Salón Cubit', 50, 'Salón ubicado en FANNY JACOVSKY 3539', 1);
+
+-- =============================================
+-- Insercción de Vistas
+-- =============================================
+INSERT into Vistas (NombreVista,Icono,Ruta,Fecha_Alta) values ('home',null,'record-list',getdate())
+
+-- =============================================
+-- Insercción de Roles_Vistas
+-- =============================================
+--Insert Roles_Vistas
+INSERT INTO RolesVistas (RolId, VistaId)
+SELECT 1, VistaId
+FROM Vistas;
+
+
+-- =============================================
+-- Insercción de Permisos
+-- =============================================
+insert into Permisos (Accion,Controlador,Fecha_Alta) VALUES ('GetList','Roles',GETDATE()),
+('Get','Roles',GETDATE()),
+('GetViewList', 'Roles',GETDATE()),
+('GetPermissionList','Roles',GETDATE()),
+('Create','Roles',GETDATE()),
+('CreateRoleView','Roles',getdate()),
+('CreateRolePermission','Roles',GETDATE()),
+('Update','Roles',getdate()),
+('Recover','Roles',GETDATE()),
+('Update','Roles',getdate()),
+('DeleteRoleView','Roles',getdate()),
+('DeleteRolePermission','Roles',GETDATE())
+
+-- =============================================
+-- Insercción de Roles_Permisos
+-- =============================================
+INSERT INTO RolesPermisos (RolId, PermisoId)
+SELECT 1, PermisoId
+FROM Permisos;
+
+

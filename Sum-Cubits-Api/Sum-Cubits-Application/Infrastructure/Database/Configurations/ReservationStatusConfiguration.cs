@@ -12,7 +12,6 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.ToTable("EstadosReserva");
 
             builder.HasKey(er => er.Id);
-
             builder.Property(er => er.Id)
                 .HasColumnName("EstadoId");
 

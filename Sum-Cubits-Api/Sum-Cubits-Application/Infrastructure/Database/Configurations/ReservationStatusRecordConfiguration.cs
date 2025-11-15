@@ -15,8 +15,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(r => r.Id)
                 .HasColumnName("HistorialId");
             builder.Property(r => r.ReservaId)
-                .IsRequired()
-                .HasColumnName("ReservaId");
+                .IsRequired();
             builder.Property(r => r.EstadoAnterior)
                 .IsRequired();
             builder.Property(r => r.EstadoNuevo)

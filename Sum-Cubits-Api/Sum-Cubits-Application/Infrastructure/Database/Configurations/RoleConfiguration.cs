@@ -10,13 +10,15 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         {
             builder.ToTable("Roles");
             builder.HasKey(r => r.Id);
+            builder.Property(r => r.Id)
+                .HasColumnName("RolId");
             builder.Property(r => r.NombreRol)
                    .IsRequired()
                    .HasMaxLength(100);
-            builder.Property(r => r.Descripcion)
-                   .HasMaxLength(250);
             builder.Property(r => r.Created)
                     .HasColumnName("FechaCreacion");
+            builder.Property(r => r.Updated)
+                    .HasColumnName("FechaBaja");
         }
     }
 }

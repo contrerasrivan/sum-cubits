@@ -11,7 +11,7 @@ namespace Sum_Cubits_Application.Infrastructure.Services
         private readonly QueryUser queryUser;
         private readonly QueryRole queryRole;
 
-        public async Task<int?> GetRoleId(string? userId, string? userEmail)
+        public async Task<int?> GetRoleId(int userId, string? userEmail)
         {
             var user = GetUserFromCache(userId);
 
@@ -37,18 +37,18 @@ namespace Sum_Cubits_Application.Infrastructure.Services
             return user.RolId;
         }
 
-        private User? GetUserFromCache(string? userId)
+        private User? GetUserFromCache(int userId)
         {
             var cacheKey = GetUserKey(userId);
             return queryCacheService.Get<User?>(cacheKey);
         }
 
-        private async Task<User?> GetUserFromDatabase(string? userId)
+        private async Task<User?> GetUserFromDatabase(int userId)
         {
             return await queryUser.Get(userId);
         }
 
-        private async Task<User> CreateUser(string? userId, string? userEmail)
+        private async Task<User> CreateUser(int userId, string? userEmail)
         {
             var role = await GetDefaultRole();
 
@@ -78,7 +78,7 @@ namespace Sum_Cubits_Application.Infrastructure.Services
             queryCacheService.Set(cacheKey, user);
         }
 
-        private static string GetUserKey(string? userId) => $"USER_{userId}";
+        private static string GetUserKey(int? userId) => $"USER_{userId}";
 
     }
 }

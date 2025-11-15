@@ -8,7 +8,7 @@ import auth from '@/auth'
 
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import '@/main.css'
+import '@/assets/styles/main.css'
 
 createApp(App)
   .use(store)

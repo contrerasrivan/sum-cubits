@@ -1,7 +1,10 @@
 ﻿
 namespace Sum_Cubits_Application.Features.Permissions
 {
-    internal class PermissionDto
+    public class PermissionDto
     {
+        public int Id { get; set; }
+        public string? Accion { get; set; }
+        public string? Controlador { get; set; }
     }
 }

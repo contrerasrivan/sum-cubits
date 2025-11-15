@@ -20,7 +20,7 @@ namespace Sum_Cubits_Application.Features.Users
                 .ToListAsync();
         }
 
-        public async Task<User?> Get(string? userId)
+        public async Task<User?> Get(int userId)
         {
             return await _dbContext.Set<User>()
                 .Where(u => u.UsuarioId == userId)

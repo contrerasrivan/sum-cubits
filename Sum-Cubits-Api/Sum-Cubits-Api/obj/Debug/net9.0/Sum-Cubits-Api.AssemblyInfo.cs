@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sum-Cubits-Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+690f0b42e1e2b7ae0b0f9d7aa20883bf2a1b20f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2b9648028b88fe1e71f9a8c121a9b080a01156e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sum-Cubits-Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sum-Cubits-Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

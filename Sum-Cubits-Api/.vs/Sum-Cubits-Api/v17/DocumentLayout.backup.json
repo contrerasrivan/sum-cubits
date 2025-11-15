@@ -1,44 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\appsettings.staging.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\appsettings.staging.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\infrastructure\\services\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\infrastructure\\services\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\authorization\\authorizationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\authorization\\authorizationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\features\\roles\\queryrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\features\\roles\\queryrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\features\\users\\queryuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\features\\users\\queryuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\installer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\installer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -46,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,123 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.Staging.json",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\appsettings.Staging.json",
-              "RelativeDocumentMoniker": "Sum-Cubits-Api\\appsettings.Staging.json",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\appsettings.Staging.json",
-              "RelativeToolTip": "Sum-Cubits-Api\\appsettings.Staging.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-29T11:46:36.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "Sum-Cubits-Api\\appsettings.Development.json",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\appsettings.Development.json",
-              "RelativeToolTip": "Sum-Cubits-Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-29T11:46:18.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthorizationHandler.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Authorization\\AuthorizationHandler.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Authorization\\AuthorizationHandler.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Authorization\\AuthorizationHandler.cs",
-              "RelativeToolTip": "Sum-Cubits-Api\\Authorization\\AuthorizationHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T11:43:41.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "QueryUser.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Users\\QueryUser.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Features\\Users\\QueryUser.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Users\\QueryUser.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Features\\Users\\QueryUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T15:56:19.056Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Infrastructure\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Infrastructure\\Services\\UserService.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Infrastructure\\Services\\UserService.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Infrastructure\\Services\\UserService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAIA2wDkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T15:33:49.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "QueryRole.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Roles\\QueryRole.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Features\\Roles\\QueryRole.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Roles\\QueryRole.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Features\\Roles\\QueryRole.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAIBJwAsAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T15:27:55.595Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PermissionService.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Infrastructure\\Services\\PermissionService.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Infrastructure\\Services\\PermissionService.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Infrastructure\\Services\\PermissionService.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Infrastructure\\Services\\PermissionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T00:54:16.187Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Installer.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Installer.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Installer.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Installer.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Installer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T00:31:26.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Program.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Program.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Program.cs",
-              "RelativeToolTip": "Sum-Cubits-Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T14:30:42.567Z",
-              "EditorCaption": ""
             }
           ]
         }

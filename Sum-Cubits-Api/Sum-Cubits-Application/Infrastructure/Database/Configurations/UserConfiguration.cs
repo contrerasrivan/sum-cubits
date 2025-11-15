@@ -15,7 +15,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .HasColumnName("UsuarioId");
             builder.Property(u => u.RolId)
                 .IsRequired();
-            builder.Property(u => u.NombreCompleto)
+            builder.Property(u => u.FullName)
                 .IsRequired()
                 .HasMaxLength(100);
             builder.Property(u => u.Email)
@@ -27,6 +27,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .HasColumnName("FechaBaja");
             builder.Property(u => u.Activo)
                 .IsRequired();
+            builder.Property(u => u.UsuarioBajaId);
         }
     }
 }

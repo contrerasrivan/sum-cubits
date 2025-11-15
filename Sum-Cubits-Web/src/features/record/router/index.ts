@@ -11,16 +11,8 @@ export const recordRouter: RouteRecordRaw = {
     ]
 }
 
-const RecordList =  () =>  import('@/features/record/pages/Record-List.vue');
-
 export const myRecordRouter: RouteRecordRaw = {
     path: 'my-record',
-    component: RouterView,
-    children: [
-      {
-        path: '',
-        name: 'record-list',
-        component: RecordList()
-      }  
-    ]
+    name: 'record-list',
+    component: () => import('@/features/record/pages/Record-List.vue')
 }

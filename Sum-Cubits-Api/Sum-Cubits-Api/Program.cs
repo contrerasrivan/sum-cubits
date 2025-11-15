@@ -1,4 +1,5 @@
 using Scalar.AspNetCore;
+using Sum_Cubits_Api.Endpoints;
 using Sum_Cubits_Api.Installers;
 using Sum_Cubits_Application;
 
@@ -19,6 +20,9 @@ builder.Services.AddOptions<ScalarOptions>().BindConfiguration("Scalar");
 builder.Services.InstallAuthentication(authAudience, authAuthority);
 builder.Services.InstallAuthorization();
 
+//Install Query 
+builder.Services.InstallQueries();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
@@ -31,6 +35,11 @@ app.UseRouting();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
+
+//Endpoints Sum
+app.MapPermissionEndpoints();
+app.MapViewEndpoints();
+app.MapRoleEndpoints();
 
 app.Run();
 

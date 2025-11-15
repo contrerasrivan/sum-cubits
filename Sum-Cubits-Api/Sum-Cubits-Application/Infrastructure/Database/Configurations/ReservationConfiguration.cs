@@ -9,7 +9,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
     {
         public void Configure(EntityTypeBuilder<Reservation> builder)
         {
-            builder.ToTable("Reservations");
+            builder.ToTable("Reservas");
             builder.HasKey(r => r.Id);
             builder.Property(r => r.Id)
                 .HasColumnName("ReservaId");

@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { resolve, dirname } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+import tailwindcss from 'tailwindcss'
 import fs from 'fs'
 
 export default defineConfig({

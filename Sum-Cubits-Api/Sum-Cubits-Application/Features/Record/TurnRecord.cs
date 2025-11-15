@@ -13,7 +13,7 @@ namespace Sum_Cubits_Application.Features.Record
         public DateTime HoraFinAnterior { get; set; }
         public DateTime HoraInicioNuevo { get; set; }
         public DateTime HoraFinNuevo { get; set; }
-        public int UsuarioModificadorID { get; set; }
+        public int UsuarioModificadorId { get; set; }
         public DateTime FechaCambio { get; set; }
         public string Motivo { get; set; }
     }

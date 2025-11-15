@@ -1,1 +1,180 @@
-[]
+[
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Permissions.GetPermissionList",
+    "Method": "Handle",
+    "RelativePath": "permissions/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoleId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Permissions.GetPermissionList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Permissions"
+    ],
+    "EndpointName": "GetPermissionList"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Roles.GetRoleList",
+    "Method": "Handle",
+    "RelativePath": "roles/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Size",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "roleId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Roles.GetRoleList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Roles"
+    ],
+    "EndpointName": "GetRoleList"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Roles.GetRole",
+    "Method": "Handle",
+    "RelativePath": "roles/{roleId:int}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Roles.GetRole\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Roles"
+    ],
+    "EndpointName": "GetRole"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Permissions.GetPermissionList",
+    "Method": "Handle",
+    "RelativePath": "roles/{roleId:int}/permissions",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoleId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Permissions.GetPermissionList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Roles"
+    ],
+    "EndpointName": "GetPermissionList"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Views.GetViewList",
+    "Method": "Handle",
+    "RelativePath": "roles/{roleId:int}/views",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RolId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Views.GetViewList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Roles"
+    ],
+    "EndpointName": "GetViewList"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.Views.GetViewList",
+    "Method": "Handle",
+    "RelativePath": "views/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RolId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.Views.GetViewList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Views"
+    ],
+    "EndpointName": "GetViewList"
+  }
+]

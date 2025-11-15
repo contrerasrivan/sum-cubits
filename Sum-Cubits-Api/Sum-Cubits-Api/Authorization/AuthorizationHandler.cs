@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Sum_Cubits_Application.Features.Users;
 using Sum_Cubits_Application.Infrastructure;
 using Sum_Cubits_Application.Infrastructure.Services;
 using System.Security.Claims;
@@ -11,7 +12,7 @@ namespace Sum_Cubits_Api.Authorization
     {
         private readonly UserService userService;
         private readonly PermissionService permissionService;
-
+        private readonly QueryUser queryUser;
 
         public async Task HandleAsync(AuthorizationHandlerContext context)
         {
@@ -48,8 +49,16 @@ namespace Sum_Cubits_Api.Authorization
         private async Task<int> GetUserRoleId(AuthorizationHandlerContext context)
         {
             var userEmail = context.User.FindFirstValue(ClaimTypes.Email);
-            var userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return await userService.GetRoleId(userId, userEmail) ?? throw new Exception();
+
+            // Obtener el usuario por email usando UserService
+            var userList = await queryUser.GetList();
+            var user = userList.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+                throw new Exception("Usuario no encontrado por email.");
+
+            var userId = user.UsuarioId;
+            return await userService.GetRoleId(userId, userEmail) ?? throw new Exception("Rol no encontrado para el usuario.");
         }
 
 

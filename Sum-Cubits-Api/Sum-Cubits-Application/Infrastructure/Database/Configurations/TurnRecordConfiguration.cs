@@ -21,7 +21,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .IsRequired();
             builder.Property(tr => tr.HoraFinNuevo)
                 .IsRequired();
-            builder.Property(tr => tr.UsuarioModificadorID)
+            builder.Property(tr => tr.UsuarioModificadorId)
                 .IsRequired();
             builder.Property(tr => tr.FechaCambio)
                 .IsRequired();
