@@ -5,9 +5,9 @@ using Sum_Cubits_Application.Features.Record;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class TurnRecordConfiguration : IEntityTypeConfiguration<TurnRecord>
+    public class TurnRecordConfiguration : IEntityTypeConfiguration<HistorialTurnos>
     {
-        public void Configure(EntityTypeBuilder<TurnRecord> builder)
+        public void Configure(EntityTypeBuilder<HistorialTurnos> builder)
         {
             builder.ToTable("HistorialTurnos");
             builder.HasKey(tr => tr.Id);

@@ -5,9 +5,9 @@ using Sum_Cubits_Application.Features.Record;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class ReservationStatusRecordConfiguration : IEntityTypeConfiguration<ReservationStatusRecord>
+    public class ReservationStatusRecordConfiguration : IEntityTypeConfiguration<HistorialEstadoReserva>
     {
-        public void Configure(EntityTypeBuilder<ReservationStatusRecord> builder)
+        public void Configure(EntityTypeBuilder<HistorialEstadoReserva> builder)
         {
             builder.ToTable("HistorialEstadoReserva");
 

@@ -12,7 +12,7 @@ namespace Sum_Cubits_Api.Authorization
     {
         private readonly UserService userService;
         private readonly PermissionService permissionService;
-        private readonly QueryUser queryUser;
+        private readonly QueryUsuarios queryUser;
 
         public async Task HandleAsync(AuthorizationHandlerContext context)
         {

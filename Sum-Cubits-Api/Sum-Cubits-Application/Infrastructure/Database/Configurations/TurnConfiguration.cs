@@ -5,9 +5,9 @@ using Sum_Cubits_Application.Features.Turns;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class TurnConfiguration : IEntityTypeConfiguration<Turn>
+    public class TurnConfiguration : IEntityTypeConfiguration<Turnos>
     {
-        public void Configure(EntityTypeBuilder<Turn> builder)
+        public void Configure(EntityTypeBuilder<Turnos> builder)
         {
             builder.ToTable("Turnos");
 

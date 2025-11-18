@@ -6,10 +6,10 @@ namespace Sum_Cubits_Api.Installers
     {
         public static IServiceCollection InstallQueries(this IServiceCollection services)
         {
-            var applicationAssembly = typeof(QueryPermission).Assembly;
+            var applicationAssembly = typeof(QueryPermisos).Assembly;
 
             var queryTypes = applicationAssembly.GetTypes()
-                .Where(t => !t.IsClass &&
+                .Where(t => t.IsClass &&
                 !t.IsAbstract &&
                 t.Name.StartsWith("Query"))
                 .ToList();

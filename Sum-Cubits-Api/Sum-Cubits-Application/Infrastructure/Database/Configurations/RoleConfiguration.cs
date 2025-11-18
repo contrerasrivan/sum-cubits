@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Roles;
+using Sum_Cubits_Application.Features.Rol;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class RoleConfiguration : IEntityTypeConfiguration<Role>
+    public class RoleConfiguration : IEntityTypeConfiguration<Roles>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<Roles> builder)
         {
             builder.ToTable("Roles");
             builder.HasKey(r => r.Id);

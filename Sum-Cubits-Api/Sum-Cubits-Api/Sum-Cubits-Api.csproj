@@ -19,12 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\Lounge\" />
-    <Folder Include="Endpoints\Record\" />
-    <Folder Include="Endpoints\Reservation\" />
-    <Folder Include="Endpoints\Status\" />
-    <Folder Include="Endpoints\Turns\" />
-    <Folder Include="Endpoints\Users\" />
+    <Folder Include="Endpoints\Salones\" />
+    <Folder Include="Endpoints\Historial\" />
+    <Folder Include="Endpoints\Reservas\" />
+    <Folder Include="Endpoints\EstadosReserva\" />
+    <Folder Include="Endpoints\Turnos\" />
+    <Folder Include="Endpoints\Usuarios\" />
     <Folder Include="Filters\" />
     <Folder Include="Service\" />
   </ItemGroup>

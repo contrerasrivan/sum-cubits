@@ -5,14 +5,12 @@ using Sum_Cubits_Application.Features.Users;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<Usuarios>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Usuarios> builder)
         {
             builder.ToTable("Usuarios");
-            builder.HasKey(u => u.Id);
-            builder.Property(u => u.Id)
-                .HasColumnName("UsuarioId");
+            builder.HasKey(u => u.UsuarioId);
             builder.Property(u => u.RolId)
                 .IsRequired();
             builder.Property(u => u.FullName)
@@ -21,10 +19,10 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(255);
-            builder.Property(u => u.Created)
-                .HasColumnName("FechaRegistro");
-            builder.Property(u => u.Updated)
-                .HasColumnName("FechaBaja");
+            builder.Property(u => u.FechaRegistro)
+                .IsRequired();
+            builder.Property(u => u.FechaBaja)
+                .IsRequired();
             builder.Property(u => u.Activo)
                 .IsRequired();
             builder.Property(u => u.UsuarioBajaId);

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Features\Room\QueryLounge.cs" />
+    <None Include="Features\Salones\QuerySalones.cs" />
   </ItemGroup>
 
   <ItemGroup>

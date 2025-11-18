@@ -2,8 +2,9 @@
 CREATE TABLE Roles (
     RolId INT PRIMARY KEY IDENTITY(1,1),
     NombreRol NVARCHAR(50) NOT NULL UNIQUE,
-    Descripcion NVARCHAR(200),
     FechaCreacion DATETIME DEFAULT GETDATE() not null
+	Fecha_Modificacion datetime null,
+	Fecha_Baja datetime null
 );
 
 -- Tabla de Vista
@@ -13,8 +14,8 @@ Create table Vistas(
 	Icono nvarchar(max) null,
 	Ruta nvarchar(max)null,
 	Fecha_Alta datetime default getdate() not null,
-	Fecha_Modificacion datetime default getdate() not null,
-	Fecha_Baja datetime default getdate() not null
+	Fecha_Modificacion datetime null,
+	Fecha_Baja datetime null
 );
 
 create table Permisos (
@@ -22,15 +23,14 @@ create table Permisos (
 	Accion nvarchar(max) null,
 	Controlador nvarchar(max) null,
 	Fecha_Alta datetime default getdate() not null,
-	Fecha_Modificacion datetime default getdate() not null,
-	Fecha_Baja datetime default getdate() not null
+	Fecha_Modificacion datetime null,
+	Fecha_Baja datetime null
 );
 
 create table RolesVistas(
 	RolVistaId int primary key identity(1,1),
 	RolId int not null,
 	VistaId int not null,
-	Fecha_Asignacion datetime default getdate(),
 	constraint FK_RolesVistas_Rol Foreign Key (RolId) REFERENCES Roles(RolId) ON DELETE CASCADE,
 	constraint FK_RolesVistas_Vista Foreign Key (VistaId) REFERENCES Vistas(VistaId) ON DELETE CASCADE,
 	constraint UQ_RolVista Unique (RolId, VistaId)
@@ -43,14 +43,6 @@ create table RolesPermisos (
 	constraint FK_RolesPermisos_Rol Foreign Key (RolId) REFERENCES Roles(RolId) ON DELETE CASCADE,
 	constraint FK_RolesPermisos_Permiso Foreign Key (PermisoId) REFERENCES Permisos(PermisoId) ON DELETE CASCADE,
 	constraint UQ_RolPermiso Unique (RolId, PermisoId)
-);
-
--- Tabla de Roles
-CREATE TABLE Roles (
-    RolId INT PRIMARY KEY IDENTITY(1,1),
-    NombreRol NVARCHAR(50) NOT NULL UNIQUE,
-    FechaCreacion DATETIME DEFAULT GETDATE(),
-	FechaBaja DATETIME DEFAULT getdate()
 );
 
 -- Tabla de Usuarios
@@ -93,7 +85,7 @@ CREATE TABLE HistorialTurnos (
     HoraInicioNueva TIME NOT NULL,
     HoraFinNueva TIME NOT NULL,
     UsuarioModificadorId INT NOT NULL,
-    FechaCambio DATETIME DEFAULT GETDATE(),
+    FechaCambio DATETIME null),
     Motivo NVARCHAR(500),
     CONSTRAINT FK_HistorialTurnos_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_HistorialTurnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId)

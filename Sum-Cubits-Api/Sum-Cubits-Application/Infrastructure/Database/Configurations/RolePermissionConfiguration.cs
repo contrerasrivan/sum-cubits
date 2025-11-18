@@ -1,15 +1,15 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Roles;
+using Sum_Cubits_Application.Features.Rol;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermission>
+    public class RolePermissionConfiguration : IEntityTypeConfiguration<RolesPermisos>
     {
-        public void Configure(EntityTypeBuilder<RolePermission> builder)
+        public void Configure(EntityTypeBuilder<RolesPermisos> builder)
         {
-            builder.ToTable("RolePermissions");
+            builder.ToTable("RolesPemisos");
             builder.HasKey(rp => new { rp.RolId, rp.PermisoId });
 
             builder.Property(rp => rp.RolId);
