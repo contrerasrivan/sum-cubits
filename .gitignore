@@ -1,0 +1,15 @@
+﻿#system files
+.DS_Store
+thumbs.db
+desktop.ini
+
+#editors folders
+.vs
+.idea
+.vscode
+
+#certificate folders
+https
+
+#publish folders
+Sum-Cubits-Publish

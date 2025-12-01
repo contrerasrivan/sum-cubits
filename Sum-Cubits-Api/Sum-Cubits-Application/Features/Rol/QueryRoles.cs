@@ -15,11 +15,11 @@ namespace Sum_Cubits_Application.Features.Rol
             _dbContext = dbContext;
         }
 
-        public async Task<Roles?> Get(int id)
+        public async Task<Roles?> Get(int? id)
         {
             return await _dbContext
                 .Set<Roles>()
-                .Where(r => r.Id == id)
+                .Where(r => r.RolId == id)
                 .FirstOrDefaultAsync();
         }
 
@@ -30,7 +30,7 @@ namespace Sum_Cubits_Application.Features.Rol
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<RolesVistas?> GetRoleView(int roleId, int viewId)
+        public async Task<RolesVistas?> GetRoleView(int? roleId, int viewId)
         {
             return await _dbContext
                 .Set<RolesVistas>()
@@ -60,7 +60,7 @@ namespace Sum_Cubits_Application.Features.Rol
                 .ToListAsync();
         }
 
-        public async Task<List<RolesVistas>> GetRoleViewList(int roleId)
+        public async Task<List<RolesVistas>> GetRoleViewList(int? roleId)
         {
             return await _dbContext
                 .Set<RolesVistas>()
@@ -80,14 +80,12 @@ namespace Sum_Cubits_Application.Features.Rol
                 .ToListAsync();
         }
 
-        public async Task<List<Roles>> GetList(Expression<Func<Roles, bool>> predicate, int skip, int take)
+        public async Task<List<Roles>> GetList(Expression<Func<Roles, bool>> predicate)
         {
             return await _dbContext
                 .Set<Roles>()
                 .Where(predicate)
-                .OrderBy(r => r.Id)
-                .Skip(skip)
-                .Take(take)
+                .OrderBy(r => r.RolId)
                 .ToListAsync();
         }
 
@@ -95,7 +93,7 @@ namespace Sum_Cubits_Application.Features.Rol
         {
             return await _dbContext
                 .Set<Roles>()
-                .Where(r => r.Id == roleId)
+                .Where(r => r.RolId == roleId)
                 .AnyAsync();
         }
 
@@ -109,7 +107,7 @@ namespace Sum_Cubits_Application.Features.Rol
 
         public async Task Create(Roles entity)
         {
-            entity.Created = DateTime.UtcNow;
+            entity.FechaCreacion = DateTime.Now;
 
             _dbContext.Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -141,15 +139,7 @@ namespace Sum_Cubits_Application.Features.Rol
 
         public async Task Update(Roles entity)
         {
-            entity.Updated = DateTime.UtcNow;
-
-            _dbContext.Update(entity);
-            await _dbContext.SaveChangesAsync();
-        }
-
-        public async Task Delete(Roles entity)
-        {
-            entity.Deleted = DateTime.UtcNow;
+            entity.FechaBaja = DateTime.Now;
 
             _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();

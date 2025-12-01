@@ -33,7 +33,7 @@ export default class RoleService {
   async getViewList(roleId: number): Promise<ViewDto[] | undefined> {
     const url = `${this.API_URL}/${roleId}/views`
     const { data } = await useHttp(url).get().json<GetViewListResponse>()
-    return data.value?.viewsList
+    return data.value?.viewDtos
   }
 
   async getPermissionList(roleId: number): Promise<PermissionDto[] | undefined> {

@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Users;
+using Sum_Cubits_Application.Features.Usuarios;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
@@ -14,18 +14,21 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(u => u.RolId)
                 .IsRequired();
             builder.Property(u => u.FullName)
-                .IsRequired()
                 .HasMaxLength(100);
             builder.Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(255);
+            builder.Property(u => u.Telefono);
             builder.Property(u => u.FechaRegistro)
                 .IsRequired();
-            builder.Property(u => u.FechaBaja)
-                .IsRequired();
-            builder.Property(u => u.Activo)
-                .IsRequired();
+            builder.Property(u => u.FechaBaja);
+            builder.Property(u => u.Activo).IsRequired();
             builder.Property(u => u.UsuarioBajaId);
+
+            builder.HasOne(u => u.Role)
+                .WithMany()
+                .HasForeignKey(u => u.RolId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -42,13 +42,24 @@ namespace Sum_Cubits_Application
                 .GetExecutingAssembly()
                 .GetTypes()
                 .Where(type => !type.IsInterface &&
+                               !type.IsAbstract &&
                                type.FullName != null &&
                                type.FullName.EndsWith("Service"));
 
             foreach (var type in serviceTypes)
             {
-                var typeInterface = type.GetInterfaces()[0];
-                services.AddScoped(typeInterface, type);
+                var interfaces = type.GetInterfaces();
+
+                if (interfaces.Length > 0)
+                {
+                    var typeInterface = interfaces[0];
+                    services.AddScoped(typeInterface, type);
+                }
+                else
+                {
+                    // Registrar la clase concreta directamente
+                    services.AddScoped(type);
+                }
             }
         }
 

@@ -9,30 +9,23 @@ namespace Sum_Cubits_Api.Endpoints.Role
     {
         public record Response(List<RolesDto>? RoleDtos);
 
-        public static async Task<IResult> Handle(
-            [FromQuery] int Page,
-            [FromQuery] int Size,
-            [FromQuery]int? roleId,
-            [FromServices] QueryRoles queryRole)
+        public static async Task<IResult> Handle(QueryRoles queryRole)
         {
-            var take = Size;
-            var skip = Size * Page;
-            var rolePredicate = BuildFilter(Page, Size, roleId);
-            var roleList = await queryRole.GetList(rolePredicate,skip,take);
+            var rolePredicate = BuildFilter();
+            var roleList = await queryRole.GetList(rolePredicate);
             var roleDtoList = roleList
                 .Select(role => new RolesDto
                 {
-                    Id = role.Id,
+                    Id = role.RolId,
                     NombreRol = role.NombreRol,
-                    Created = role.Created,
-                    Update = role.Updated,
-                    Deleted = role.Deleted
+                    FechaCreacion = role.FechaCreacion,
+                    FechaBaja = role.FechaBaja
                 })
                 .ToList();
             return Results.Ok(new Response(roleDtoList));
         }
 
-        private static Expression<Func<Roles, bool>> BuildFilter(int? page,int? size,int? roleId)
+        private static Expression<Func<Roles, bool>> BuildFilter()
         {
             return PredicateBuilder.New<Roles>(true);
         }

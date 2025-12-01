@@ -3,8 +3,11 @@ using Sum_Cubits_Application.Infrastructure.Database;
 
 namespace Sum_Cubits_Application.Features.Rol
 {
-    public class Roles : BaseEntty
+    public class Roles 
     {
+        public int RolId { get; set; }
         public string NombreRol { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public DateTime? FechaBaja { get; set; }
     }
 }

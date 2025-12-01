@@ -6,17 +6,19 @@ namespace Sum_Cubits_Api.Endpoints.Role
     public static class GetRole
     {
         public record Response(RolesDto? RoleDto);
-        public static async Task<IResult> Handle([FromRoute] int RoleId, [FromServices] QueryRoles queryRole)
+        public static async Task<IResult> Handle(int? roleId, QueryRoles queryRole)
         {
-            var role = await queryRole.Get(RoleId);
+            var role = await queryRole.Get(roleId);
             if (role == null)
             {
                 return Results.NotFound();
             }
             var roleDto = new RolesDto
             {
-                Id = role.Id,
-                NombreRol = role.NombreRol
+                Id = role.RolId,
+                NombreRol = role.NombreRol,
+                FechaCreacion = role.FechaCreacion,
+                FechaBaja = role.FechaBaja
             };
             return Results.Ok(new Response(roleDto));
         }

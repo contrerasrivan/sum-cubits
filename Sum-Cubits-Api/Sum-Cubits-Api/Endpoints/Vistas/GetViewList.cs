@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Sum_Cubits_Application.Features.Rol;
 using Sum_Cubits_Application.Features.Views;
 
@@ -7,24 +6,26 @@ namespace Sum_Cubits_Api.Endpoints.Views
 {
     public class GetViewList
     {
-        public record Response (List<VistasDto>? ViewDtos);
+        public record Response(List<VistasDto>? ViewDtos);
 
-        public static async Task<Response> Handle([FromQuery] int? RolId ,[FromServices] QueryVistas queryView, [FromServices] QueryRoles queryRole)
+        public static async Task<IResult> Handle(int? roleId, QueryVistas queryView, QueryRoles queryRole)
         {
-            if (RolId.HasValue)
+            if (roleId.HasValue)
             {
-                var roleViewList = await queryRole.GetRoleViewList(RolId.Value);
-
-                var view = roleViewList
+                var roleViewList = await queryRole.GetRoleViewList(roleId);
+                var roleViewListDto = roleViewList
                     .Select(rv => new VistasDto
                     {
-                        Id = rv.View.VistaId,
+                        Id = rv.VistaId,
                         NombreVista = rv.View.NombreVista,
                         Icono = rv.View.Icono,
                         Ruta = rv.View.Ruta
-                    }).ToList();
-                return new Response(view);
+                    })
+                    .ToList();
+                return Results.Ok(new Response(roleViewListDto));
             }
+
+
             var viewList = await queryView.GetList();
             var viewDtoList = viewList
                 .Select(view => new VistasDto
@@ -35,7 +36,7 @@ namespace Sum_Cubits_Api.Endpoints.Views
                     Ruta = view.Ruta
                 })
                 .ToList();
-            return new Response(viewDtoList);
+            return Results.Ok(new Response(viewDtoList));
         }
     }
 }

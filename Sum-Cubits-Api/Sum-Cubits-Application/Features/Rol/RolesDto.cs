@@ -5,8 +5,7 @@ namespace Sum_Cubits_Application.Features.Rol
     {
         public int Id { get; set; }
         public string? NombreRol { get; set; }
-        public DateTime? Created { get; set; }
-        public DateTime? Update { get; set; }
-        public DateTime? Deleted { get; set; }
+        public DateTime? FechaCreacion { get; set; }
+        public DateTime? FechaBaja { get; set; }
     }
 }

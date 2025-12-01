@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\features\\vistas\\vistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\features\\vistas\\vistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\rolesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\rolesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\role\\getrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\role\\getrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\features\\rol\\queryroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\features\\rol\\queryroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\vistas\\getviewlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\vistas\\getviewlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-application\\features\\rol\\rolesvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D1A06EC-54CD-4DA5-8D89-158E6D4CBCDC}|Sum-Cubits-Application\\Sum-Cubits-Application.csproj|solutionrelative:sum-cubits-application\\features\\rol\\rolesvistas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\user\\getuserrolid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\user\\getuserrolid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\permisos\\getpermissionlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\permisos\\getpermissionlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +54,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Vistas.cs",
-              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Vistas\\Vistas.cs",
-              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Features\\Vistas\\Vistas.cs",
-              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Vistas\\Vistas.cs",
-              "RelativeToolTip": "Sum-Cubits-Application\\Features\\Vistas\\Vistas.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "RolesVistas.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Rol\\RolesVistas.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Features\\Rol\\RolesVistas.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Rol\\RolesVistas.cs",
+              "RelativeToolTip": "Sum-Cubits-Application\\Features\\Rol\\RolesVistas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T13:09:41.605Z",
+              "WhenOpened": "2025-12-01T12:06:17.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QueryRoles.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Rol\\QueryRoles.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Application\\Features\\Rol\\QueryRoles.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Features\\Rol\\QueryRoles.cs",
+              "RelativeToolTip": "Sum-Cubits-Application\\Features\\Rol\\QueryRoles.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAADgvxEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T12:01:10.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetRoleList.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
+              "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T11:40:27.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetUserRolId.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\User\\GetUserRolId.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\User\\GetUserRolId.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\User\\GetUserRolId.cs",
+              "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\User\\GetUserRolId.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T03:13:19.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetPermissionList.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Permisos\\GetPermissionList.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Permisos\\GetPermissionList.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Permisos\\GetPermissionList.cs",
+              "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Permisos\\GetPermissionList.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T03:04:06.502Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "GetRole.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Role\\GetRole.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Role\\GetRole.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Role\\GetRole.cs",
+              "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Role\\GetRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T03:02:06.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RolesEndpoints.cs",
+              "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\RolesEndpoints.cs",
+              "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\RolesEndpoints.cs",
+              "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\RolesEndpoints.cs",
+              "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\RolesEndpoints.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAQwBMAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T02:21:34.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GetViewList.cs",
               "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T12:48:36.403Z",
+              "WhenOpened": "2025-12-01T01:03:19.487Z",
               "EditorCaption": ""
             }
           ]

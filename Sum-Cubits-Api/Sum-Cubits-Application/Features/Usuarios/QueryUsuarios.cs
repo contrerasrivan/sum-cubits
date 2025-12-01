@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sum_Cubits_Application.Infrastructure.Database;
 
-namespace Sum_Cubits_Application.Features.Users
+namespace Sum_Cubits_Application.Features.Usuarios
 {
     public class QueryUsuarios
     {
@@ -20,10 +20,10 @@ namespace Sum_Cubits_Application.Features.Users
                 .ToListAsync();
         }
 
-        public async Task<Usuarios?> Get(int userId)
+        public async Task<Usuarios?> Get(string userEmail)
         {
             return await _dbContext.Set<Usuarios>()
-                .Where(u => u.UsuarioId == userId)
+                .Where(u => u.Email == userEmail)
                 .FirstOrDefaultAsync();
         }
 

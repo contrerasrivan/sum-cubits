@@ -1,3 +1,7 @@
 {
-    
+    "shell":{
+        "titles":{
+            "home":"Inicio"
+        }
+    }
 }

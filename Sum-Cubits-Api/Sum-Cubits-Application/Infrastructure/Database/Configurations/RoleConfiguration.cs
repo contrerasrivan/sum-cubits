@@ -9,16 +9,13 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         public void Configure(EntityTypeBuilder<Roles> builder)
         {
             builder.ToTable("Roles");
-            builder.HasKey(r => r.Id);
-            builder.Property(r => r.Id)
-                .HasColumnName("RolId");
+            builder.HasKey(r => r.RolId);
             builder.Property(r => r.NombreRol)
                    .IsRequired()
                    .HasMaxLength(100);
-            builder.Property(r => r.Created)
-                    .HasColumnName("FechaCreacion");
-            builder.Property(r => r.Updated)
-                    .HasColumnName("FechaBaja");
+            builder.Property(r => r.FechaCreacion)
+                .IsRequired();
+            builder.Property(r => r.FechaBaja);
         }
     }
 }

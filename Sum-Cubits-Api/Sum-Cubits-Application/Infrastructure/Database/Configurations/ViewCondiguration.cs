@@ -14,10 +14,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(v => v.NombreVista)
                 .HasMaxLength(100);
             builder.Property(v => v.Icono)
-                .IsRequired()
                 .HasMaxLength(100);
             builder.Property(v => v.Ruta)
-                .IsRequired()
                 .HasMaxLength(200);
             builder.Property(v => v.Created)
                 .HasColumnName("Fecha_Alta");

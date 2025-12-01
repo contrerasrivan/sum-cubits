@@ -1,4 +1,9 @@
-# Logs
+#system files
+.DS_Store
+thumbs.db
+desktop.ini
+
+#logs files
 logs
 *.log
 npm-debug.log*
@@ -7,18 +12,26 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+#dependencies
 node_modules
+
+#build folders
 dist
 dist-ssr
+coverage
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+#editor folders
+.vscode
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+#config variables
+.env.production
+
+#certificate folders
+https

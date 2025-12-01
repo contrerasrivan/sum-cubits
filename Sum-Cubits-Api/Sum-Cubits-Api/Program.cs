@@ -10,6 +10,7 @@ var authAuthority = builder.Configuration["Auth0:Domain"];
 
 builder.Services.InstallDatabase(connectionString);
 builder.Services.InstallRepositories();
+builder.Services.InstallServices();
 
 
 builder.Services.InstallCors();
@@ -40,6 +41,7 @@ app.UseAuthorization();
 app.MapPermissionEndpoints();
 app.MapViewEndpoints();
 app.MapRoleEndpoints();
+app.MapUsersEndpoints();
 
 app.Run();
 

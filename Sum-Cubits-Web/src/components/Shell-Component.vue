@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import ProgressSpinner from 'primevue/progressspinner';
 import type { MenuItem } from 'primevue/menuitem'
 import ProgressBar from 'primevue/progressbar'
 import Menubar from 'primevue/menubar'
 import Message from 'primevue/message'
 import Button from 'primevue/button'
+
+
 import UserService from '@/features/users/services/UserService'
 import RoleService from '@/features/roles/services/RoleService'
 
@@ -13,11 +14,11 @@ import type { ViewDto } from '@/features/views/models/ViewDto'
 import { useLoadingStore } from '@/store/useLoadingStore'
 import { useUserStore } from '@/features/users/store'
 import { useErrorStore } from '@/store/useErrorStore'
-import { RouterView, useRoute } from 'vue-router'
+
+import { RouterView, useRouter } from 'vue-router'
 import { computed,onMounted, ref } from 'vue'
 import { useAuth0 } from '@auth0/auth0-vue'
 import { useI18n } from 'vue-i18n'
-import router from '@/router'
 
 const roleService = new RoleService();
 const userService = new UserService();
@@ -25,7 +26,7 @@ const userService = new UserService();
 const loadingStore = useLoadingStore();
 const userStore = useUserStore();
 const errorStore = useErrorStore();
-const route = useRoute();
+const router = useRouter();
 const auth = useAuth0();
 const { t } = useI18n();
 
@@ -35,13 +36,18 @@ const anyMenuList = computed(() => {
     return menuItemList.value.length > 0;
 })
 
+const userEmail = computed(() =>{
+  return auth.user.value?.email;
+})
+
 const getViewList = async () => {
-    const roleId = await userService.getRoleId();
-    const viewList = await roleService.getViewList(roleId);
-    if (viewList) {
-        menuItemList.value = viewList.map(mapTo);
-        userStore.setUserPermissions(viewList.map((view) => view.nombreVista));
-    }
+  const roleId = await userService.getRoleId(userEmail.value || '');
+  const viewsList = await roleService.getViewList(roleId);
+  if(viewsList){
+    menuItemList.value = viewsList.map(mapTo);
+    userStore.setUserPermissions(viewsList.map((view) => view.nombreVista));
+  }
+
 }
 
 const mapTo = (view : ViewDto) => {
@@ -52,7 +58,7 @@ const mapTo = (view : ViewDto) => {
 }
 
 const goToRouteByName = (name : string) => {
-    router.push({ name : name });
+    router.push({ name : name })
 }
 
 const logout = () => {
@@ -65,7 +71,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div >
+  <div v-if="anyMenuList">
     <Menubar :model="menuItemList">
         <template #end>
             <Button label="Logout" icon="pi pi-fw pi-power-off" class="p-button-danger" @click="logout" />
@@ -88,8 +94,12 @@ onMounted(async () => {
       </Message>
       <RouterView />
     </div>
-
-  </div>
+    </div>
+    <div v-else>
+      <div class="flex flex-wrap min-h-screen align-content-center justify-content-center">
+        <ProgressSpinner/>
+      </div>
+    </div>
 </template>
 
 <style scoped>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Sum_Cubits_Application.Features.Users;
+using Sum_Cubits_Application.Features.Usuarios;
 using Sum_Cubits_Application.Infrastructure;
 using Sum_Cubits_Application.Infrastructure.Services;
 using System.Security.Claims;
@@ -58,7 +58,7 @@ namespace Sum_Cubits_Api.Authorization
                 throw new Exception("Usuario no encontrado por email.");
 
             var userId = user.UsuarioId;
-            return await userService.GetRoleId(userId, userEmail) ?? throw new Exception("Rol no encontrado para el usuario.");
+            return await userService.GetRoleId(userEmail) ?? throw new Exception("Rol no encontrado para el usuario.");
         }
 
 

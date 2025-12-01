@@ -8,7 +8,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "RoleId",
+        "Name": "roleId",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -34,23 +34,7 @@
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Page",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "Size",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "roleId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "Sum_Cubits_Api.Endpoints.Role.GetRoleList\u002BResponse",
@@ -66,8 +50,8 @@
     "EndpointName": "GetRoleList"
   },
   {
-    "ContainingType": "Sum_Cubits_Api.Endpoints.Role.GetRole",
-    "Method": "Handle",
+    "ContainingType": "Sum_Cubits_Api.Endpoints.RolesEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapRoleEndpoints\u003Eb__0_0",
     "RelativePath": "roles/{roleId:int}",
     "HttpMethod": "GET",
     "IsController": false,
@@ -75,8 +59,8 @@
     "Parameters": [
       {
         "Name": "roleId",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -94,17 +78,17 @@
     "EndpointName": "GetRole"
   },
   {
-    "ContainingType": "Sum_Cubits_Api.Endpoints.Permissions.GetPermissionList",
-    "Method": "Handle",
+    "ContainingType": "Sum_Cubits_Api.Endpoints.RolesEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapRoleEndpoints\u003Eb__0_2",
     "RelativePath": "roles/{roleId:int}/permissions",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "RoleId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -122,15 +106,15 @@
     "EndpointName": "GetRolePermissionList"
   },
   {
-    "ContainingType": "Sum_Cubits_Api.Endpoints.Views.GetViewList",
-    "Method": "Handle",
+    "ContainingType": "Sum_Cubits_Api.Endpoints.RolesEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapRoleEndpoints\u003Eb__0_1",
     "RelativePath": "roles/{roleId:int}/views",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "RolId",
+        "Name": "roleId",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
@@ -150,6 +134,56 @@
     "EndpointName": "GetRoleViewList"
   },
   {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.User.GetUserList",
+    "Method": "Handle",
+    "RelativePath": "users/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.User.GetUserList\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Users"
+    ],
+    "EndpointName": "GetUserList"
+  },
+  {
+    "ContainingType": "Sum_Cubits_Api.Endpoints.UsersEndpoint\u002B\u003C\u003Ec",
+    "Method": "\u003CMapUsersEndpoints\u003Eb__0_0",
+    "RelativePath": "users/{userEmail}/rol",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userEmail",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Sum_Cubits_Api.Endpoints.User.GetUserRolId\u002BResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Users"
+    ],
+    "EndpointName": "GetUserRolId"
+  },
+  {
     "ContainingType": "Sum_Cubits_Api.Endpoints.Views.GetViewList",
     "Method": "Handle",
     "RelativePath": "views/",
@@ -158,7 +192,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "RolId",
+        "Name": "roleId",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
