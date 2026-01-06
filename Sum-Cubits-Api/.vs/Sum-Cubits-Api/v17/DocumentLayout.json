@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\vistas\\getviewlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\vistas\\getviewlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|solutionrelative:sum-cubits-api\\endpoints\\role\\getrolelist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E3B6A3C7-AD78-4D36-AACF-0D9476A9EC4A}|Sum-Cubits-Api\\Sum-Cubits-Api.csproj|d:\\mio\\sum-cubits\\sum-cubits-api\\sum-cubits-api\\endpoints\\role\\getrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GetRoleList.cs",
               "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
               "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
@@ -46,8 +46,7 @@
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwBsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:40:27.972Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T11:40:27.972Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Permisos\\GetPermissionList.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T03:04:06.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T03:04:06.502Z"
             },
             {
               "$type": "Document",
@@ -72,18 +70,17 @@
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Role\\GetRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T03:02:06.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T03:02:06.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GetViewList.cs",
               "DocumentMoniker": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T01:03:19.487Z",
               "EditorCaption": ""
