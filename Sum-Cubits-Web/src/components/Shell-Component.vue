@@ -77,7 +77,7 @@ onMounted(async () => {
             <Button label="Logout" icon="pi pi-fw pi-power-off" class="p-button-danger" @click="logout" />
         </template>
     </Menubar>
-    <div class="m-3">
+    <div class="p-1 md:p-6">
       <ProgressBar
         v-if="loadingStore.isLoading"
         class="mb-3"
@@ -102,6 +102,4 @@ onMounted(async () => {
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

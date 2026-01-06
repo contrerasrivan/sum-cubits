@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mYM44a+5rgI=",
+  "dgSpecHash": "Em4bke7v6sM=",
   "success": true,
-  "projectFilePath": "D:\\Mio\\Sum-Cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Sum-Cubits-Application.csproj",
+  "projectFilePath": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Application\\Sum-Cubits-Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ivanc\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ivanc\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

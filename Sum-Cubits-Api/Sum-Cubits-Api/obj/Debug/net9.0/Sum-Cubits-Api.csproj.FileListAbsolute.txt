@@ -172,3 +172,4 @@ D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\Sum-Cubits-Api.
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\ref\Sum-Cubits-Api.dll
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\FluentValidation.dll
 D:\Mio\Sum-Cubits\Sum-Cubits-Api\Sum-Cubits-Api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\Mio\sum-cubits\Sum-Cubits-Api\Sum-Cubits-Api\obj\Debug\net9.0\swae.build.ex.cache

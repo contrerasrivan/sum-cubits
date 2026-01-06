@@ -46,7 +46,23 @@ const Noir = definePreset(Aura, {
         }
       }
     }
-  }
+  },
+  components: {
+        panel: {
+            colorScheme: {
+                light: {
+                    root: {
+                        background: '{neutral.100}'
+                    }
+                },
+                dark: {
+                    root: {
+                        background: '{neutral.900}'
+                    }
+                }
+            }
+        }
+    }
 })
 
 const primeVueCustomOptions = {

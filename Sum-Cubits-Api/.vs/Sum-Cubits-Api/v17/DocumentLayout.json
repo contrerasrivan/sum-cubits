@@ -46,7 +46,8 @@
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Role\\GetRoleList.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwBsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:40:27.972Z"
+              "WhenOpened": "2025-12-01T11:40:27.972Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -80,7 +81,7 @@
               "RelativeDocumentMoniker": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "ToolTip": "D:\\Mio\\sum-cubits\\Sum-Cubits-Api\\Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
               "RelativeToolTip": "Sum-Cubits-Api\\Endpoints\\Vistas\\GetViewList.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAiwA4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T01:03:19.487Z",
               "EditorCaption": ""
