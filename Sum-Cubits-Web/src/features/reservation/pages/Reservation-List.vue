@@ -4,8 +4,10 @@ import Button from 'primevue/button'
 import Card from 'primevue/card'
 import Tag from 'primevue/tag'
 import Panel from 'primevue/panel'
+import Dialog from 'primevue/dialog'
+import MultiSelect from 'primevue/multiselect'
 
-import ReservationService from '@/features/reservation/services/indext';
+import ReservationService from '@/features/reservation/services';
 
 import { onMounted, ref, computed } from 'vue'
 import { useAuth0 } from '@auth0/auth0-vue';
@@ -24,6 +26,42 @@ const userName = computed(() => {
 
 // service
 const reservationService = new ReservationService();
+
+// Modal state
+const showEditModal = ref(false)
+const selectedReservation = ref<any>(null)
+const selectedTurnos = ref<string[]>([])
+
+// Opciones de turnos disponibles
+const turnosDisponibles = [
+  { label: 'Turno Mañana', value: 'Turno Mañana' },
+  { label: 'Turno Tarde', value: 'Turno Tarde' },
+  { label: 'Turno Noche', value: 'Turno Noche' }
+]
+
+// Función para abrir el modal de edición
+const openEditModal = (reservation: any) => {
+  selectedReservation.value = reservation
+  selectedTurnos.value = [...reservation.reserva]
+  showEditModal.value = true
+}
+
+// Función para guardar los cambios
+const saveChanges = () => {
+  if (selectedReservation.value) {
+    selectedReservation.value.reserva = [...selectedTurnos.value]
+    // Aquí puedes llamar al servicio para actualizar en el backend
+    // await reservationService.updateReservation(selectedReservation.value)
+  }
+  showEditModal.value = false
+}
+
+// Función para cancelar la edición
+const cancelEdit = () => {
+  showEditModal.value = false
+  selectedReservation.value = null
+  selectedTurnos.value = []
+}
 
 // Mock data for demonstration (replace with actual data later)
 const reservations = ref([
@@ -86,7 +124,14 @@ const hasReservations = computed(() => reservations.value.length > 0)
                 <div class="grid">
                     <div class="col-12">
                         <div class="button-row">
-                            <Button icon="pi pi-pencil" text rounded size="small" severity="secondary" />
+                            <Button 
+                              icon="pi pi-pencil" 
+                              text 
+                              rounded 
+                              size="small" 
+                              severity="secondary"
+                              @click="openEditModal(reservation)" 
+                            />
                             <Button icon="pi pi-trash" text rounded size="small" severity="danger" />
                         </div>
                     </div>
@@ -97,6 +142,56 @@ const hasReservations = computed(() => reservations.value.length > 0)
         </template>
         </Panel>
     </div>
+
+    <!-- Modal de Edición -->
+    <Dialog 
+      v-model:visible="showEditModal" 
+      :header="t('Editar Reserva')"
+      :modal="true"
+      :style="{ width: '50vw' }"
+      :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+    >
+       <template #header>
+      <div class="flex align-items-center gap-2">
+        <i class="pi pi-calendar-edit text-2xl"></i>
+        <span class="text-xl font-semibold">{{ t('Editar Reserva') }}:</span>
+        <span class="ml-4 text-lg">{{ selectedReservation?.date }}</span>
+      </div>
+    </template>
+        
+        <div class="flex items-center gap-4 mb-1">
+          <label for="turnos" class="font-semibold">
+            <i class="pi pi-clock">
+              <span class="text-xl font-semibold ml-2">{{ t('Turnos') }}:</span>
+            </i>
+          </label>
+          <MultiSelect 
+            v-model="selectedTurnos"
+            :options="turnosDisponibles" 
+            optionLabel="label"
+            optionValue="value"
+            :placeholder="t('Selecciona los turnos')"
+            class="w-min-full"
+            display="chip"
+          />
+        </div>
+      
+      <template #footer>
+        <Button 
+          :label="t('Cancelar')" 
+          icon="pi pi-times" 
+          text 
+          severity="secondary"
+          @click="cancelEdit"
+        />
+        <Button 
+          :label="t('Guardar')" 
+          icon="pi pi-check" 
+          severity="primary"
+          @click="saveChanges"
+        />
+      </template>
+    </Dialog>
  </div>
 </template>
 

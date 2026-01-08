@@ -13,3 +13,27 @@ https
 
 #publish folders
 Sum-Cubits-Publish
+
+##################################
+# Visual Studio / .NET
+##################################
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+##################################
+# NuGet
+##################################
+packages/
+*.nupkg
+.nuget/
+
+##################################
+# ASP.NET Core
+##################################
+appsettings.*.json
+!appsettings.json

@@ -35,3 +35,16 @@ coverage
 
 #certificate folders
 https
+
+#.NET build files
+*.pdb
+*.dll
+*.cache
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.csproj.AssemblyReference.cache
+*.sourcelink.json
+bin/
+obj/
+Debug/
+Release/

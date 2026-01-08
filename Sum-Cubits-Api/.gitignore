@@ -1,37 +1,23 @@
-#system files
-.DS_Store
-thumbs.db
-desktop.ini
-
-#editors folders
-.vs
-.idea
-.vscode
-
-#build folders
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-build/
-bld/
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-msbuild.log
-msbuild.err
-msbuild.wrn
-
-#certificate folders
-https
-
-#solution files
-*.suo
+##################################
+# Visual Studio / .NET
+##################################
+.vs/
+bin/
+obj/
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
 
-#config files
-appsettings.Production.json
+##################################
+# NuGet
+##################################
+packages/
+*.nupkg
+.nuget/
+
+##################################
+# ASP.NET Core
+##################################
+appsettings.*.json
+!appsettings.json
