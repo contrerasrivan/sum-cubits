@@ -10,9 +10,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         public void Configure(EntityTypeBuilder<Reservas> builder)
         {
             builder.ToTable("Reservas");
-            builder.HasKey(r => r.Id);
-            builder.Property(r => r.Id)
-                .HasColumnName("ReservaId");
+            builder.HasKey(r => r.ReservaId);
+            builder.Property(r => r.ReservaId);
             builder.Property(r => r.UsuarioId)
                 .IsRequired();
             builder.Property(r => r.SalonId)

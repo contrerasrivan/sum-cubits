@@ -9,9 +9,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         public void Configure(EntityTypeBuilder<Salones> builder)
         {
             builder.ToTable("Salones");
-            builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id)
-                .HasColumnName("SalonId");
+            builder.HasKey(e => e.SalonId);
+            builder.Property(e => e.SalonId);
             builder.Property(e => e.NombreSalon)
                 .IsRequired()
                 .HasMaxLength(100);

@@ -3,8 +3,9 @@ using Sum_Cubits_Application.Infrastructure.Database;
 
 namespace Sum_Cubits_Application.Features.Room
 {
-    public class Salones : BaseEntty
+    public class Salones 
     {
+        public int SalonId { get; set; }
         public string NombreSalon { get; set; }
         public int Capacidad { get; set; }
         public string Descripcion { get; set; }

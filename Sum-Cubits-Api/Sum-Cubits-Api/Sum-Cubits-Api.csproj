@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Endpoints\Historial\**" />
+    <Content Remove="Endpoints\Historial\**" />
+    <EmbeddedResource Remove="Endpoints\Historial\**" />
+    <None Remove="Endpoints\Historial\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.21" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7" />
@@ -20,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Endpoints\Salones\" />
-    <Folder Include="Endpoints\Historial\" />
     <Folder Include="Endpoints\Reservas\" />
     <Folder Include="Endpoints\EstadosReserva\" />
     <Folder Include="Endpoints\Turns\" />

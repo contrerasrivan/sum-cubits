@@ -11,9 +11,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
         {
             builder.ToTable("Turnos");
 
-            builder.HasKey(t => t.Id);
-            builder.Property(t => t.Id)
-                .HasColumnName("TurnoId");
+            builder.HasKey(t => t.TurnoId);
+            builder.Property(t => t.TurnoId);
 
             builder.Property(t => t.NombreTurno)
                 .IsRequired()
@@ -25,10 +24,8 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(t => t.Descripcion);   
             builder.Property(t => t.Activo)
                 .IsRequired();
-            builder.Property(t => t.Created)
-                .HasColumnName("FechaCreacion");
-            builder.Property(t => t.Updated)
-                .HasColumnName("FechaModificacion");
+            builder.Property(t => t.FechaCreacion);
+            builder.Property(t => t.FechaModificacion);
             builder.Property(t => t.UsuarioModificadorID)
                 .IsRequired();
         }
