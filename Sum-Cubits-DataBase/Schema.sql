@@ -76,20 +76,6 @@ CREATE TABLE Turnos (
     CONSTRAINT CK_Turno_Horario CHECK (HoraFin > HoraInicio)
 );
 
--- Tabla de Historial de Cambios en Turnos
-CREATE TABLE HistorialTurnos (
-    HistorialTurnoId INT PRIMARY KEY IDENTITY(1,1),
-    TurnoId INT NOT NULL,
-    HoraInicioAnterior TIME,
-    HoraFinAnterior TIME,
-    HoraInicioNueva TIME NOT NULL,
-    HoraFinNueva TIME NOT NULL,
-    UsuarioModificadorId INT NOT NULL,
-    FechaCambio DATETIME null,
-    Motivo NVARCHAR(500),
-    CONSTRAINT FK_HistorialTurnos_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
-    CONSTRAINT FK_HistorialTurnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId)
-);
 
 -- Tabla del Salón
 CREATE TABLE Salones (
@@ -123,23 +109,7 @@ CREATE TABLE Reservas (
     CONSTRAINT FK_Reservas_Salon FOREIGN KEY (SalonId) REFERENCES Salones(SalonId),
     CONSTRAINT FK_Reservas_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_Reservas_Estado FOREIGN KEY (EstadoId) REFERENCES EstadosReserva(EstadoId),
-    -- Constraint para evitar reservas duplicadas (mismo salón, fecha y turno)
-    CONSTRAINT UQ_Reserva_Unica UNIQUE (SalonId, FechaReserva, TurnoId),
     CONSTRAINT CK_Fecha_Reserva CHECK (FechaReserva >= CAST(GETDATE() AS DATE))
-);
-
--- Tabla de Historial de Cambios de Estado
-CREATE TABLE HistorialEstadoReserva (
-    HistorialId INT PRIMARY KEY IDENTITY(1,1),
-    ReservaId INT NOT NULL,
-    EstadoAnterior INT,
-    EstadoNuevo INT NOT NULL,
-    FechaCambio DATETIME DEFAULT GETDATE(),
-    UsuarioModificador INT,
-    Comentario NVARCHAR(500),
-    CONSTRAINT FK_Historial_Reserva FOREIGN KEY (ReservaId) REFERENCES Reservas(ReservaId),
-    CONSTRAINT FK_Historial_EstadoAnterior FOREIGN KEY (EstadoAnterior) REFERENCES EstadosReserva(EstadoId),
-    CONSTRAINT FK_Historial_EstadoNuevo FOREIGN KEY (EstadoNuevo) REFERENCES EstadosReserva(EstadoId)
 );
 
 -- =============================================
@@ -162,10 +132,8 @@ insert into Roles (NombreRol,FechaCreacion) values ('Usuario', getdate())
 -- =============================================
 -- Insercción de Estados
 -- =============================================
-INSERT into EstadosReserva (NombreEstado,Descripcion) VALUES ('Disponible', 'Fecha y Salón disponible con todos los turnos habilitados'),
-('Poco Disponible', 'Fecha y Salón con al menos 1 turno disponible'),
+INSERT into EstadosReserva (NombreEstado,Descripcion) VALUES 
 ('Cancelada', 'Fecha y Salón Cancelada'),
-('No Disponible', 'Fecha y Salón con todos los turnos agotados'),
 ('Confirmada', 'Reserva confirmada');
 
 
@@ -187,7 +155,7 @@ INSERT INTO Salones (Nombre, Capacidad, Descripcion, Activo) VALUES
 -- =============================================
 -- Insercción de Vistas
 -- =============================================
-INSERT into Vistas (NombreVista,Icono,Ruta,Fecha_Alta) values ('home',null,'record-list',getdate())
+INSERT into Vistas (NombreVista,Icono,Ruta,Fecha_Alta) values ('home',null,'reservation-list',getdate())
 
 -- =============================================
 -- Insercción de Roles_Vistas
