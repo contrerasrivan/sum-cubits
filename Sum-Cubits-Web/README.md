@@ -5,7 +5,6 @@
 ### Prerequisites
 - Node.js (Latest LTS version recommended)
 - PNPM package manager
-- npm install vue-i18n
 
 ### Installation
 
