@@ -5,9 +5,9 @@ using Sum_Cubits_Application.Features.Reservation;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class ReservationConfiguration : IEntityTypeConfiguration<Reservas>
+    public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
     {
-        public void Configure(EntityTypeBuilder<Reservas> builder)
+        public void Configure(EntityTypeBuilder<Reservation> builder)
         {
             builder.ToTable("Reservas");
             builder.HasKey(r => r.ReservaId);

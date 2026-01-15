@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Endpoints\Salones\" />
-    <Folder Include="Endpoints\Reservas\" />
     <Folder Include="Endpoints\EstadosReserva\" />
     <Folder Include="Endpoints\Turns\" />
     <Folder Include="Filters\" />

@@ -42,6 +42,7 @@ app.MapPermissionEndpoints();
 app.MapViewEndpoints();
 app.MapRoleEndpoints();
 app.MapUsersEndpoints();
+app.MapReservationEndpoints();
 
 app.Run();
 
