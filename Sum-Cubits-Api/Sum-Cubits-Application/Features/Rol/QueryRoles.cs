@@ -139,7 +139,7 @@ namespace Sum_Cubits_Application.Features.Rol
 
         public async Task Update(Roles entity)
         {
-            entity.FechaBaja = DateTime.Now;
+            entity.Fecha_Baja = DateTime.Now;
 
             _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();

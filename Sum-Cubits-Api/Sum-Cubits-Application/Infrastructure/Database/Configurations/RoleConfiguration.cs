@@ -15,7 +15,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                    .HasMaxLength(100);
             builder.Property(r => r.FechaCreacion)
                 .IsRequired();
-            builder.Property(r => r.FechaBaja);
+            builder.Property(r => r.Fecha_Baja);
         }
     }
 }

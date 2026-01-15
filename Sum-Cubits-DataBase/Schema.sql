@@ -2,7 +2,7 @@
 CREATE TABLE Roles (
     RolId INT PRIMARY KEY IDENTITY(1,1),
     NombreRol NVARCHAR(50) NOT NULL UNIQUE,
-    FechaCreacion DATETIME DEFAULT GETDATE() not null
+    FechaCreacion DATETIME DEFAULT GETDATE() not null,
 	Fecha_Modificacion datetime null,
 	Fecha_Baja datetime null
 );
@@ -85,7 +85,7 @@ CREATE TABLE HistorialTurnos (
     HoraInicioNueva TIME NOT NULL,
     HoraFinNueva TIME NOT NULL,
     UsuarioModificadorId INT NOT NULL,
-    FechaCambio DATETIME null),
+    FechaCambio DATETIME null,
     Motivo NVARCHAR(500),
     CONSTRAINT FK_HistorialTurnos_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_HistorialTurnos_Usuario FOREIGN KEY (UsuarioModificadorId) REFERENCES Usuarios(UsuarioId)
@@ -120,7 +120,7 @@ CREATE TABLE Reservas (
     CantidadPersonas INT,
     Observaciones NVARCHAR(500),
     CONSTRAINT FK_Reservas_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuarios(UsuarioId),
-    CONSTRAINT FK_Reservas_Salon FOREIGN KEY (SalonId) REFERENCES Salon(SalonId),
+    CONSTRAINT FK_Reservas_Salon FOREIGN KEY (SalonId) REFERENCES Salones(SalonId),
     CONSTRAINT FK_Reservas_Turno FOREIGN KEY (TurnoId) REFERENCES Turnos(TurnoId),
     CONSTRAINT FK_Reservas_Estado FOREIGN KEY (EstadoId) REFERENCES EstadosReserva(EstadoId),
     -- Constraint para evitar reservas duplicadas (mismo salón, fecha y turno)
@@ -165,7 +165,7 @@ insert into Roles (NombreRol,FechaCreacion) values ('Usuario', getdate())
 INSERT into EstadosReserva (NombreEstado,Descripcion) VALUES ('Disponible', 'Fecha y Salón disponible con todos los turnos habilitados'),
 ('Poco Disponible', 'Fecha y Salón con al menos 1 turno disponible'),
 ('Cancelada', 'Fecha y Salón Cancelada'),
-('No Disponible', 'Fecha y Salón con todos los turnos agotados')
+('No Disponible', 'Fecha y Salón con todos los turnos agotados'),
 ('Confirmada', 'Reserva confirmada');
 
 
@@ -181,7 +181,7 @@ INSERT into Turnos (NombreTurno,HoraInicio,HoraFin,Descripcion,Activo,FechaCreac
 -- =============================================
 -- Insercción de Salón
 -- =============================================
-INSERT INTO Salones (NombreSalon, Capacidad, Descripcion, Activo) VALUES
+INSERT INTO Salones (Nombre, Capacidad, Descripcion, Activo) VALUES
 ('Salón Cubit', 50, 'Salón ubicado en FANNY JACOVSKY 3539', 1);
 
 -- =============================================

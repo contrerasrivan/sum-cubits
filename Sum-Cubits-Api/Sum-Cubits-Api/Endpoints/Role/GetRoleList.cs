@@ -19,7 +19,7 @@ namespace Sum_Cubits_Api.Endpoints.Role
                     Id = role.RolId,
                     NombreRol = role.NombreRol,
                     FechaCreacion = role.FechaCreacion,
-                    FechaBaja = role.FechaBaja
+                    FechaBaja = role.Fecha_Baja
                 })
                 .ToList();
             return Results.Ok(new Response(roleDtoList));
