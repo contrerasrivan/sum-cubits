@@ -21,7 +21,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(u => u.Telefono);
             builder.Property(u => u.FechaRegistro)
                 .IsRequired();
-            builder.Property(u => u.FechaBaja);
+            builder.Property(u => u.Fecha_Baja);
             builder.Property(u => u.Activo).IsRequired();
             builder.Property(u => u.UsuarioBajaId);
 
