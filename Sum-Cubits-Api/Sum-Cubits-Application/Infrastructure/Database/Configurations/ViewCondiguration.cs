@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Views;
+using Sum_Cubits_Application.Features.Vistas;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class ViewCondiguration : IEntityTypeConfiguration<Vistas>
+    public class ViewCondiguration : IEntityTypeConfiguration<Vista>
     {
-        public void Configure(EntityTypeBuilder<Vistas> builder)
+        public void Configure(EntityTypeBuilder<Vista> builder)
         {
             builder.ToTable("Vistas");
             builder.HasKey(v => v.VistaId);

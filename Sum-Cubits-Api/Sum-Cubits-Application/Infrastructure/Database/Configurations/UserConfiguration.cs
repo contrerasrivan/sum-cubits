@@ -5,9 +5,9 @@ using Sum_Cubits_Application.Features.Usuarios;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<Usuarios>
+    public class UserConfiguration : IEntityTypeConfiguration<Usuario>
     {
-        public void Configure(EntityTypeBuilder<Usuarios> builder)
+        public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.ToTable("Usuarios");
             builder.HasKey(u => u.UsuarioId);

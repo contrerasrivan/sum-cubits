@@ -1,5 +1,5 @@
-﻿using Sum_Cubits_Application.Features.Permissions;
-using Sum_Cubits_Application.Features.Rol;
+﻿using Sum_Cubits_Application.Features.Permisos;
+using Sum_Cubits_Application.Features.Roles;
 using Sum_Cubits_Application.Infrastructure.Services;
 
 namespace Sum_Cubits_Application.Infrastructure
@@ -7,7 +7,13 @@ namespace Sum_Cubits_Application.Infrastructure
     public class PermissionService 
     {
         private readonly QueryCacheService _queryCacheService;
-        private readonly QueryRoles _queryRole;
+        private readonly QueryRol _queryRole;
+
+        public PermissionService(QueryCacheService queryCacheService, QueryRol queryRole)
+        {
+            _queryCacheService = queryCacheService;
+            _queryRole = queryRole;
+        }
 
         public async Task<bool> CheckPermission(int roleId, string action, string controller)
         {
@@ -30,12 +36,12 @@ namespace Sum_Cubits_Application.Infrastructure
             RemovePermissionListFromCache(roleId);
         }
 
-        private async Task<List<Permisos>?> GetPermissionList(int roleId)
+        private async Task<List<Permiso>?> GetPermissionList(int roleId)
         {
             var cacheKey = GetRolePermissionKey(roleId);
 
             if (_queryCacheService.Exists(cacheKey))
-                return _queryCacheService.Get<List<Permisos>>(cacheKey);
+                return _queryCacheService.Get<List<Permiso>>(cacheKey);
 
             var rolePermissionList = await _queryRole.GetRolePermissionList(roleId);
 

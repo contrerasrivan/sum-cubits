@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Permissions;
+using Sum_Cubits_Application.Features.Permisos;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class PermissionConfiguration : IEntityTypeConfiguration<Permisos>
+    public class PermissionConfiguration : IEntityTypeConfiguration<Permiso>
     {
-        public void Configure(EntityTypeBuilder<Permisos> builder)
+        public void Configure(EntityTypeBuilder<Permiso> builder)
         {
             builder.ToTable("Permisos");
             builder.HasKey(p => p.PermisoId);

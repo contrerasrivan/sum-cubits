@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sum_Cubits_Api.Endpoints.User;
+using Sum_Cubits_Api.Endpoints.Users;
 using Sum_Cubits_Application.Infrastructure.Services;
 
 namespace Sum_Cubits_Api.Endpoints
@@ -20,6 +20,7 @@ namespace Sum_Cubits_Api.Endpoints
             group.MapGet("{userEmail}/rol", ([FromRoute] string userEmail, [FromServices] UserService userService) => GetUserRolId.Handle (userEmail,userService))
                 .WithName("GetUserRolId")
                 .Produces<GetUserRolId.Response>(StatusCodes.Status200OK);
+
 
             return app;
         }

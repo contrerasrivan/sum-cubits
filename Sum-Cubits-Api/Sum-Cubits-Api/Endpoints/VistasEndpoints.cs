@@ -1,4 +1,4 @@
-﻿using Sum_Cubits_Api.Endpoints.Views;
+﻿using Sum_Cubits_Api.Endpoints.Vistas;
 
 namespace Sum_Cubits_Api.Endpoints
 {

@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using Sum_Cubits_Application.Features.Status;
+using Sum_Cubits_Application.Features.EstadosReserva;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class ReservationStatusConfiguration : IEntityTypeConfiguration<EstadosReserva>
+    public class ReservationStatusConfiguration : IEntityTypeConfiguration<Estado>
     {
-        public void Configure(EntityTypeBuilder<EstadosReserva> builder)
+        public void Configure(EntityTypeBuilder<Estado> builder)
         {
             builder.ToTable("EstadosReserva");
 

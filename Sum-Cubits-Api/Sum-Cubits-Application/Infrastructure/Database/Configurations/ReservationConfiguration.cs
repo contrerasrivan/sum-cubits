@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Reservation;
+using Sum_Cubits_Application.Features.Reservas;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
+    public class ReservationConfiguration : IEntityTypeConfiguration<Reserva>
     {
-        public void Configure(EntityTypeBuilder<Reservation> builder)
+        public void Configure(EntityTypeBuilder<Reserva> builder)
         {
             builder.ToTable("Reservas");
             builder.HasKey(r => r.ReservaId);
@@ -21,32 +21,29 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
             builder.Property(r => r.EstadoId)
                 .IsRequired();
             builder.Property(r => r.FechaReserva)
+                .HasColumnType("date")
                 .IsRequired();
             builder.Property(r => r.FechaSolicitud)
-                .IsRequired();
+                .IsRequired(false);
             builder.Property(r => r.CantidadPersonas);
             builder.Property(r => r.Observaciones)
                 .HasMaxLength(500);
 
-            builder.Property(r => r.UsuarioId);
-            builder.HasOne(r => r.User)
+            builder.HasOne(r => r.Usuario)
                 .WithMany()
                 .HasForeignKey(r => r.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Property(r => r.SalonId);
-            builder.HasOne(r => r.Lounge)
+            builder.HasOne(r => r.Salon)
                 .WithMany()
                 .HasForeignKey(r => r.SalonId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Property(r => r.TurnoId);
-            builder.HasOne(r => r.Turn)
+            builder.HasOne(r => r.Turno)
                 .WithMany()
                 .HasForeignKey(r => r.TurnoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Property(r => r.EstadoId);
             builder.HasOne(r => r.Estado)
                 .WithMany()
                 .HasForeignKey(r => r.EstadoId)

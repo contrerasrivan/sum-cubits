@@ -1,6 +1,6 @@
 ﻿
 using Sum_Cubits_Application.Application.Exceptions;
-using Sum_Cubits_Application.Features.Rol;
+using Sum_Cubits_Application.Features.Roles;
 using Sum_Cubits_Application.Features.Usuarios;
 
 namespace Sum_Cubits_Application.Infrastructure.Services
@@ -8,16 +8,16 @@ namespace Sum_Cubits_Application.Infrastructure.Services
     public class UserService
     {
         private readonly QueryCacheService _queryCacheService;
-        private readonly QueryUsuarios _queryUser;
-        private readonly QueryRoles _queryRole;
+        private readonly QueryUsuario _queryUser;
+        private readonly QueryRol _queryRole;
 
-        public UserService(QueryCacheService queryCacheService,QueryUsuarios queryUsuarios, QueryRoles queryRoles)
+        public UserService(QueryCacheService queryCacheService,QueryUsuario queryUsuarios, QueryRol queryRoles)
         {
             _queryCacheService = queryCacheService;
             _queryUser = queryUsuarios;
             _queryRole = queryRoles;
         }
-        public async Task<int?> GetRoleId(string? userEmail)
+        public async Task<int?> GetRoleId(string userEmail)
         {
             var user = GetUserFromCache(userEmail);
 
@@ -43,22 +43,40 @@ namespace Sum_Cubits_Application.Infrastructure.Services
             return user.RolId;
         }
 
-        private Usuarios? GetUserFromCache(string userEmail)
+        public async Task<int> GetUserId(string userEmail)
         {
-            var cacheKey = GetUserKey(userEmail);
-            return _queryCacheService.Get<Usuarios?>(cacheKey);
+            var user = GetUserFromCache(userEmail);
+
+            if (user != null)
+                return user.UsuarioId;
+
+            user = await GetUserFromDatabase(userEmail);
+
+            if (user != null)
+            {
+                AddUserToCache(user);
+                return user.UsuarioId;
+            }
+
+            return user.UsuarioId;
         }
 
-        private async Task<Usuarios?> GetUserFromDatabase(string userEmail)
+        private Usuario? GetUserFromCache(string userEmail)
+        {
+            var cacheKey = GetUserKey(userEmail);
+            return _queryCacheService.Get<Usuario?>(cacheKey);
+        }
+
+        private async Task<Usuario?> GetUserFromDatabase(string userEmail)
         {
             return await _queryUser.Get(userEmail);
         }
 
-        private async Task<Usuarios> CreateUser(string? userEmail)
+        private async Task<Usuario> CreateUser(string userEmail)
         {
             var role = await GetDefaultRole();
 
-            var entity = new Usuarios
+            var entity = new Usuario
             {
                 Email = userEmail,
                 RolId = role.RolId
@@ -71,13 +89,13 @@ namespace Sum_Cubits_Application.Infrastructure.Services
             return entity;
         }
 
-        private async Task<Roles> GetDefaultRole()
+        private async Task<Rol> GetDefaultRole()
         {
             var role = await _queryRole.GetDefault();
             return role ?? throw new UnhandledException();
         }
 
-        private void AddUserToCache(Usuarios? user)
+        private void AddUserToCache(Usuario? user)
         {
             var cacheKey = GetUserKey(user?.Email);
             _queryCacheService.Set(cacheKey, user);

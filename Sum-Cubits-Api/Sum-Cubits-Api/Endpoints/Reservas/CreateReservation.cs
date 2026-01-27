@@ -1,28 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sum_Cubits_Application.Features.Reservation;
+using Sum_Cubits_Application.Features.Reservas;
 using Sum_Cubits_Application.Features.Usuarios;
+using Sum_Cubits_Application.Infrastructure.Services;
 
 namespace Sum_Cubits_Api.Endpoints.Reservas
 {
     public static class CreateReservation
     {
-        public record Request(DateTime FechaReserva,
+        public record Request(DateOnly FechaReserva,
             DateTime FechaSolicitud,
-            string UserEmail,
-            int IdSalon);
+            string userEmail,
+            int idSalon,
+            int idTurno,
+            int idEstado);
         public record Response(int reservationId);
 
-        public static async Task<IResult> Handle([FromBody]Request request, [FromServices] QueryReservation queryReservation, [FromServices] QueryUsuarios queryUsuarios)
+        public static async Task<IResult> Handle([FromBody]Request request, [FromServices] QueryReserva queryReservation, [FromServices] QueryUsuario queryUsuarios, [FromServices] UserService userService)
         {
-            var usuario = await queryUsuarios.Get(request.UserEmail);
-            if (usuario == null)
+            var userId = await userService.GetUserId(request.userEmail);
+            if (userId == null)
             {
                 return Results.NotFound();
             }
-            var entity = new Reservation
+            var entity = new Reserva
             {
-                UsuarioId = usuario.UsuarioId,
-                SalonId = request.IdSalon,
+                UsuarioId = userId,
+                SalonId = request.idSalon,
+                TurnoId = request.idTurno,
+                EstadoId = request.idEstado,
                 FechaReserva = request.FechaReserva,
                 FechaSolicitud = request.FechaSolicitud
             };

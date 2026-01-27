@@ -12,8 +12,14 @@ namespace Sum_Cubits_Api.Authorization
     {
         private readonly UserService userService;
         private readonly PermissionService permissionService;
-        private readonly QueryUsuarios queryUser;
+        private readonly QueryUsuario queryUser;
 
+        public AuthorizationHandler(UserService _userService, PermissionService _permissionService, QueryUsuario _queryUsuario)
+        {
+            userService = _userService;
+            permissionService = _permissionService;
+            queryUser = _queryUsuario;
+        }
         public async Task HandleAsync(AuthorizationHandlerContext context)
         {
            foreach(var requirement in context.Requirements)
@@ -38,12 +44,49 @@ namespace Sum_Cubits_Api.Authorization
 
         private static string GetRequestAction(AuthorizationHandlerContext context)
         {
-            return ((ControllerActionDescriptor)((ActionContext)context.Resource!).ActionDescriptor).ActionName;
+            if (context.Resource is HttpContext httpContext)
+            {
+                var endpoint = httpContext.GetEndpoint();
+                var actionName = endpoint?.Metadata.GetMetadata<EndpointNameMetadata>()?.EndpointName;
+                if(endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>() is ControllerActionDescriptor descriptor)
+                {
+                    return descriptor.ActionName;
+                }
+
+                return actionName ?? httpContext.Request.RouteValues["action"]?.ToString() ?? httpContext.Request.Path.ToString();
+            }
+
+            if(context.Resource is ActionContext actionContext)
+            {
+                return ((ControllerActionDescriptor)actionContext.ActionDescriptor).ActionName;
+            }
+            throw new InvalidOperationException("No se pudo determinar la acción desde el contexto de autorización");
         }
 
         private static string GetRequestController(AuthorizationHandlerContext context)
         {
-            return ((ControllerActionDescriptor)((ActionContext)context.Resource!).ActionDescriptor).ControllerName;
+            // Para Minimal APIs, extraer desde HttpContext
+            if (context.Resource is HttpContext httpContext)
+            {
+                var endpoint = httpContext.GetEndpoint();
+
+                // Si hay un ControllerActionDescriptor (MVC), úsalo
+                if (endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>() is ControllerActionDescriptor descriptor)
+                {
+                    return descriptor.ControllerName;
+                }
+
+                // Para Minimal APIs, extraer del route o usar un valor por defecto
+                return httpContext.Request.RouteValues["controller"]?.ToString() ?? "Api";
+            }
+
+            // Fallback para MVC tradicional (ActionContext)
+            if (context.Resource is ActionContext actionContext)
+            {
+                return ((ControllerActionDescriptor)actionContext.ActionDescriptor).ControllerName;
+            }
+
+            throw new InvalidOperationException("No se pudo determinar el controlador desde el contexto de autorización.");
         }
 
         private async Task<int> GetUserRoleId(AuthorizationHandlerContext context)
@@ -51,13 +94,12 @@ namespace Sum_Cubits_Api.Authorization
             var userEmail = context.User.FindFirstValue(ClaimTypes.Email);
 
             // Obtener el usuario por email usando UserService
-            var userList = await queryUser.GetList();
-            var user = userList.FirstOrDefault(u => u.Email == userEmail);
+            var userList = await queryUser.Get(userEmail);
 
-            if (user == null)
+            if (userList == null)
                 throw new Exception("Usuario no encontrado por email.");
 
-            var userId = user.UsuarioId;
+            var userId = userList.UsuarioId;
             return await userService.GetRoleId(userEmail) ?? throw new Exception("Rol no encontrado para el usuario.");
         }
 

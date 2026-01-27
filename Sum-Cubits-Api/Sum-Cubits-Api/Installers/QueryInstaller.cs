@@ -1,4 +1,4 @@
-﻿using Sum_Cubits_Application.Features.Permissions;
+﻿using Sum_Cubits_Application.Features.Permisos;
 
 namespace Sum_Cubits_Api.Installers
 {
@@ -6,7 +6,7 @@ namespace Sum_Cubits_Api.Installers
     {
         public static IServiceCollection InstallQueries(this IServiceCollection services)
         {
-            var applicationAssembly = typeof(QueryPermisos).Assembly;
+            var applicationAssembly = typeof(QueryPermiso).Assembly;
 
             var queryTypes = applicationAssembly.GetTypes()
                 .Where(t => t.IsClass &&

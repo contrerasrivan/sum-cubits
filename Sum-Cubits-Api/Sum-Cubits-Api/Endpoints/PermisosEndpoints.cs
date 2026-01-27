@@ -1,4 +1,4 @@
-﻿using Sum_Cubits_Api.Endpoints.Permissions;
+﻿using Sum_Cubits_Api.Endpoints.Permisos;
 
 namespace Sum_Cubits_Api.Endpoints
 {

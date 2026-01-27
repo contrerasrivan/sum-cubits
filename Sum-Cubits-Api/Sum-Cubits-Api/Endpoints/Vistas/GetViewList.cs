@@ -1,20 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Sum_Cubits_Application.Features.Rol;
-using Sum_Cubits_Application.Features.Views;
+﻿
+using Sum_Cubits_Application.Features.Roles;
+using Sum_Cubits_Application.Features.Vistas;
 
-namespace Sum_Cubits_Api.Endpoints.Views
+namespace Sum_Cubits_Api.Endpoints.Vistas
 {
     public class GetViewList
     {
-        public record Response(List<VistasDto>? ViewDtos);
+        public record Response(List<VistaDto>? ViewDtos);
 
-        public static async Task<IResult> Handle(int? roleId, QueryVistas queryView, QueryRoles queryRole)
+        public static async Task<IResult> Handle(int? roleId, QueryVista queryView, QueryRol queryRole)
         {
             if (roleId.HasValue)
             {
                 var roleViewList = await queryRole.GetRoleViewList(roleId);
                 var roleViewListDto = roleViewList
-                    .Select(rv => new VistasDto
+                    .Select(rv => new VistaDto
                     {
                         Id = rv.VistaId,
                         NombreVista = rv.View.NombreVista,
@@ -28,7 +28,7 @@ namespace Sum_Cubits_Api.Endpoints.Views
 
             var viewList = await queryView.GetList();
             var viewDtoList = viewList
-                .Select(view => new VistasDto
+                .Select(view => new VistaDto
                 {
                     Id = view.VistaId,
                     NombreVista = view.NombreVista,

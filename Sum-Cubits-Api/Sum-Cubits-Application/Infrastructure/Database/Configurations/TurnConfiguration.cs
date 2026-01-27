@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sum_Cubits_Application.Features.Turns;
+using Sum_Cubits_Application.Features.Turnos;
 
 namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
 {
-    public class TurnConfiguration : IEntityTypeConfiguration<Turnos>
+    public class TurnConfiguration : IEntityTypeConfiguration<Turno>
     {
-        public void Configure(EntityTypeBuilder<Turnos> builder)
+        public void Configure(EntityTypeBuilder<Turno> builder)
         {
             builder.ToTable("Turnos");
 
@@ -26,8 +26,7 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .IsRequired();
             builder.Property(t => t.FechaCreacion);
             builder.Property(t => t.FechaModificacion);
-            builder.Property(t => t.UsuarioModificadorID)
-                .IsRequired();
+            builder.Property(t => t.UsuarioModificadorID);
         }
     }
 }
