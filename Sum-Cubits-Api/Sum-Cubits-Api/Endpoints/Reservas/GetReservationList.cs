@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sum_Cubits_Application.Features.Reservas;
 using Sum_Cubits_Application.Infrastructure.Services;
-using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace Sum_Cubits_Api.Endpoints.Reservas

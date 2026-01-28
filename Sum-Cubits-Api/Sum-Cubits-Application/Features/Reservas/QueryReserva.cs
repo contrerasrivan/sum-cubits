@@ -15,6 +15,18 @@ namespace Sum_Cubits_Application.Features.Reservas
             _dbContext = dbContext;
         }
 
+        
+        public async Task<Reserva?> Get(int reservationId)
+        {
+            return await _dbContext
+                .Set<Reserva>()
+                .Include(r => r.Usuario)
+                .Include(r => r.Salon)
+                .Include(r => r.Turno)
+                .Include(r => r.Estado)
+                .Where(r => r.ReservaId == reservationId)
+                .FirstOrDefaultAsync();
+        }
         public async Task<List<Reserva>> GetList(Expression<Func<Reserva,bool>> predicate)
         {
             return await _dbContext
@@ -28,6 +40,33 @@ namespace Sum_Cubits_Application.Features.Reservas
                 .ToListAsync();
         }
 
+        public async Task<List<int>>CheckTurnOcuped(DateOnly fechaReserva, int salonId, int[] turnosIds)
+        {
+            return await _dbContext
+                .Set<Reserva>()
+                .Where(r => r.FechaReserva == fechaReserva
+                && r.SalonId == salonId
+                && r.EstadoId == 5
+                && turnosIds.Contains(r.TurnoId ?? 0))
+                .Select(r => r.TurnoId ?? 0)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<List<int>> GetTurnsDisponibili(DateOnly fechaReserva, int salonId, int[] allTurns)
+        {
+            var turnsOcuped = await _dbContext
+                .Set<Reserva>()
+                .Where(r => r.FechaReserva == fechaReserva
+                && r.SalonId == salonId
+                && r.EstadoId == 5)
+                .Select(r => r.TurnoId ?? 0)
+                .Distinct()
+                .ToListAsync();
+
+            return allTurns.Except(turnsOcuped).ToList();
+        }
+
         public async Task Create(Reserva entity)
         {
             entity.EstadoId = 5; // Set status to 'Confirmed'
@@ -36,11 +75,24 @@ namespace Sum_Cubits_Application.Features.Reservas
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(Reserva entity)
+        public async Task Cancel(Reserva entity)
         {
-            entity.EstadoId = 3; // Set status to 'Cancelled'
-            entity.FechaSolicitud = DateTime.Now;
-            _dbContext.Remove(entity);
+            var reservationListDay = await _dbContext
+                .Set<Reserva>()
+                .Where(r => r.UsuarioId == entity.UsuarioId
+                && r.FechaReserva == entity.FechaReserva
+                && r.EstadoId == 5)
+                .ToListAsync();
+
+            if (reservationListDay.Count == 0)
+                return;
+
+            foreach(var reservation in reservationListDay)
+            {
+                reservation.EstadoId = 3;
+                reservation.FechaSolicitud = DateTime.Now;
+            }
+            
             await _dbContext.SaveChangesAsync();
 
         }

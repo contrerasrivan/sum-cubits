@@ -19,10 +19,22 @@ namespace Sum_Cubits_Api.Endpoints
                 .Produces<GetReservationList.Response>(StatusCodes.Status200OK)
                 .Produces(StatusCodes.Status404NotFound);
 
+            //GetAvailableTurnos
+            group.MapGet("available-turns", GetAvailableTurnos.Handle)
+                .WithName("GetAvailableTurnos")
+                .Produces<GetAvailableTurnos.Response>(StatusCodes.Status200OK)
+                .Produces(StatusCodes.Status404NotFound);
+
             //Create Reservation
             group.MapPost("",CreateReservation.Handle)
                 .WithName("CreateReservation")
                 .Produces<CreateReservation.Response>(StatusCodes.Status201Created);
+
+            //Delete Reservation
+            group.MapDelete("", DeleteReservation.Handle)
+                .WithName("DeleteReservation")
+                .Produces(StatusCodes.Status204NoContent)
+                .Produces(StatusCodes.Status404NotFound);
 
             return app;
         }
