@@ -36,12 +36,9 @@ const anyMenuList = computed(() => {
     return menuItemList.value.length > 0;
 })
 
-const userEmail = computed(() =>{
-  return auth.user.value?.email;
-})
 
 const getViewList = async () => {
-  const roleId = await userService.getRoleId(userEmail.value || '');
+  const roleId = await userService.getRoleId();
   const viewsList = await roleService.getViewList(roleId);
   if(viewsList){
     menuItemList.value = viewsList.map(mapTo);

@@ -52,12 +52,28 @@ const Noir = definePreset(Aura, {
             colorScheme: {
                 light: {
                     root: {
-                        background: '{neutral.100}'
+                        background: '{neutral.100}',
+                        borderColor: '{sky.900}'
                     }
                 },
                 dark: {
                     root: {
-                        background: '{neutral.900}'
+                        background: '{neutral.900}',
+                        borderColor: '{sky.900}'
+                    }
+                }
+            }
+        },
+        dialog:{
+            colorScheme: {
+                light: {
+                    root: {
+                        borderColor: '{sky.900}'
+                    }
+                },
+                dark: {
+                    root: {
+                        borderColor: '{sky.900}'
                     }
                 }
             }

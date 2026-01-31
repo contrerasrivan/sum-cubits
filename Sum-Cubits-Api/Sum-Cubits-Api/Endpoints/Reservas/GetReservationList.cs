@@ -9,16 +9,12 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
 {
     public class GetReservationList
     {
-        public record ReservationByDateDto(DateOnly fechaReserva,
-            List<TurnoConfirmadoDto> TurnosConfirmados);
+        public record ReservaDto(DateOnly fechaReserva,
+            List<TurnoDto> TurnosConfirmados);
 
-        public record TurnoConfirmadoDto(
-            int reservaId,
-            string? nombreTurno,
-            string? nombreSalon
-            );
+        public record TurnoDto(int ReservaId, string? NombreTurno, string? NombreSalon);
 
-        public record Response(List<ReservationByDateDto>? ReservationByDates);
+        public record Response(List<ReservaDto>? ReservationDto);
 
         [Authorize]
         public static async Task<IResult> Handle(HttpContext httpContext,
@@ -48,9 +44,9 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
                 var reservationDtos = reservationList
                     .Where(r => r.Estado?.NombreEstado == "Confirmada")
                     .GroupBy(r => r.FechaReserva)
-                    .Select(g => new ReservationByDateDto(
+                    .Select(g => new ReservaDto(
                         g.Key,
-                        g.Select(r => new TurnoConfirmadoDto(
+                        g.Select(r => new TurnoDto(
                             r.ReservaId,
                             r.Turno?.NombreTurno,
                             r.Salon?.Nombre

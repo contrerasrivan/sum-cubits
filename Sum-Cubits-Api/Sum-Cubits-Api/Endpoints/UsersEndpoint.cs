@@ -17,7 +17,7 @@ namespace Sum_Cubits_Api.Endpoints
                 .Produces<GetUserList.Response>(StatusCodes.Status200OK);
 
             //Get User Rol Id
-            group.MapGet("{userEmail}/rol", ([FromRoute] string userEmail, [FromServices] UserService userService) => GetUserRolId.Handle (userEmail,userService))
+            group.MapGet("/rol", GetUserRolId.Handle)
                 .WithName("GetUserRolId")
                 .Produces<GetUserRolId.Response>(StatusCodes.Status200OK);
 
