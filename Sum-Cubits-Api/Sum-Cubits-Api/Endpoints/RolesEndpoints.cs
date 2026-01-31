@@ -14,26 +14,31 @@ namespace Sum_Cubits_Api.Endpoints
         {
             var group = app.MapGroup("/roles")
                 .WithTags("Roles")
-                .WithOpenApi();
+                .WithOpenApi()
+                .RequireAuthorization("Default");
 
             //Get Rol
-            group.MapGet("{roleId:int}", ([FromRoute] int? roleId, [FromServices] QueryRol queryRole) => GetRole.Handle(roleId, queryRole))
+            group.MapGet("{roleId:int}", GetRole.Handle)
                 .WithName("GetRole")
+                .RequireAuthorization("Default")
                 .Produces<GetRole.Response>(StatusCodes.Status200OK);
 
             //Get Role List
             group.MapGet("/", GetRoleList.Handle)
                 .WithName("GetRoleList")
+                .RequireAuthorization("Default")
                 .Produces<GetRoleList.Response>(StatusCodes.Status200OK);
 
             //Get Role Views
-            group.MapGet("{roleId:int}/views", ([FromRoute] int? roleId, [FromServices] QueryVista queryVistas,[FromServices] QueryRol queryRole) => GetViewList.Handle(roleId,queryVistas,queryRole))
+            group.MapGet("{roleId:int}/views", GetViewList.Handle)
                 .WithName("GetRoleViewList")
+                .RequireAuthorization("Default")
                 .Produces<GetViewList.Response>(StatusCodes.Status200OK);
 
             //Get Role Permissions
-            group.MapGet("{roleId:int}/permissions", ([FromRoute] int roleId, [FromServices] QueryPermiso queryPermisos, QueryRol queryRoles) => GetPermissionList.Handle(roleId,queryPermisos,queryRoles))
+            group.MapGet("{roleId:int}/permissions", GetPermissionList.Handle)
                 .WithName("GetRolePermissionList")
+                .RequireAuthorization("Default")
                 .Produces<GetPermissionList.Response>(StatusCodes.Status200OK);
 
             return app;

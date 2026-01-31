@@ -1,4 +1,4 @@
-﻿namespace Sum_Cubits_Api.Endpoints.Trunos
+﻿namespace Sum_Cubits_Api.Endpoints.Turnos
 {
     public class GetTurnsList
     {

@@ -8,11 +8,13 @@ namespace Sum_Cubits_Api.Endpoints
         {
             var group = app.MapGroup("/permissions")
                 .WithTags("Permissions")
-                .WithOpenApi();
+                .WithOpenApi()
+                .RequireAuthorization("Default");
 
             // Get Permission List
             group.MapGet("/", GetPermissionList.Handle)
                 .WithName("GetPermissionList")
+                .RequireAuthorization("Default")
                 .Produces<GetPermissionList.Response>(StatusCodes.Status200OK);
 
             return app;

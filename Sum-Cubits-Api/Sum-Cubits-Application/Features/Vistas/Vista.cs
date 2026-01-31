@@ -6,7 +6,8 @@
         public string? NombreVista { get; set; }
         public string? Icono { get; set; }
         public string? Ruta { get; set; }
-        public DateTime? Created { get; set; }
-        public DateTime? Update { get; set; }
+        public DateTime? Fecha_Alta { get; set; }
+        public DateTime? Fecha_Modificacion { get; set; }
+        public DateTime? Fecha_Baja { get; set; }
     }
 }

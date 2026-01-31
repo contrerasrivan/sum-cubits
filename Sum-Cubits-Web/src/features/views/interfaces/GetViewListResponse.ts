@@ -1,5 +1,5 @@
-import type { ViewDto} from "@/features/views/models/ViewDto";
+import type { VistaDto} from "@/features/views/models/VistasDto";
 
 export interface GetViewListResponse {
-    viewDtos?: ViewDto[];
+    vistaDtos?: VistaDto[];
 }

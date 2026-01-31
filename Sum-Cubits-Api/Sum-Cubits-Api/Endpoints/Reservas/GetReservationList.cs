@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sum_Cubits_Application.Features.Reservas;
+using Sum_Cubits_Application.Features.Turnos;
 using Sum_Cubits_Application.Infrastructure.Services;
 using System.Security.Claims;
 
@@ -9,12 +10,9 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
 {
     public class GetReservationList
     {
-        public record ReservaDto(DateOnly fechaReserva,
-            List<TurnoDto> TurnosConfirmados);
 
-        public record TurnoDto(int ReservaId, string? NombreTurno, string? NombreSalon);
+        public record Response(List<ReservaDto>ReservationDto);
 
-        public record Response(List<ReservaDto>? ReservationDto);
 
         [Authorize]
         public static async Task<IResult> Handle(HttpContext httpContext,
@@ -37,12 +35,12 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
 
                 var reservationListPredicate = PredicateBuilder
                     .New<Reserva>()
-                    .And(r => r.UsuarioId == userId);
+                    .And(r => r.UsuarioId == userId)
+                    .And(r => r.EstadoId == 5);
 
                 var reservationList = await queryReserva.GetList(reservationListPredicate);
 
                 var reservationDtos = reservationList
-                    .Where(r => r.Estado?.NombreEstado == "Confirmada")
                     .GroupBy(r => r.FechaReserva)
                     .Select(g => new ReservaDto(
                         g.Key,

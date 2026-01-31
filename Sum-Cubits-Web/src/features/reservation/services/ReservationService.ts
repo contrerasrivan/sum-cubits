@@ -2,11 +2,9 @@ import { useHttp } from "@/composables/useHttp";
 
 //import Response or Request 
 import type { GetReservationListResponse } from "@/features/reservation/interfaces/GetReservationListResponse";
-import type { GetAvailableTurnsResponse, AvailableTurnoDto } from "@/features/reservation/interfaces/GetAvailableTurnsResponse";
 import type { GetAvailableTurnsRequest } from "@/features/reservation/interfaces/GetAvailableTurnsRequest";
 
 //import Dtos
-import type { ReservaDto } from "@/features/reservation/models/ReservaDto";
 import type { TurnoDto } from "@/features/turns/models/TurnoDto";
 import type { DeleteReservationRequest } from "@/features/reservation/interfaces/DeleteReservationRequest";
 import type { CreateReservationRequest } from "@/features/reservation/interfaces/CreateReservationRequest";
@@ -33,9 +31,9 @@ export default class ReservationService {
     return data.value
   }
 
-  async getAvailableTurns(request: GetAvailableTurnsRequest): Promise<GetAvailableTurnsResponse> {
-    const url = `${this.API_URL}/available-turns?fechaReserva=${request.fechaReserva}&salonId=${request.salonId}`
-    const { data } = await useHttp(url).get().json<GetAvailableTurnsResponse>()
-    return data.value ?? []
+  async getAvailableTurns(request: GetAvailableTurnsRequest): Promise<TurnoDto[] | undefined> {
+    const url = `${this.API_URL}/available-turns`
+    const { data } = await useHttp(url, request).get().json<TurnoDto[]>()
+    return data.value ?? undefined
   }
 }

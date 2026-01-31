@@ -9,7 +9,7 @@ import Button from 'primevue/button'
 import UserService from '@/features/users/services/UserService'
 import RoleService from '@/features/roles/services/RoleService'
 
-import type { ViewDto } from '@/features/views/models/ViewDto'
+import type { ViewDto } from '@/features/views/models/VistasDto'
 
 import { useLoadingStore } from '@/store/useLoadingStore'
 import { useUserStore } from '@/features/users/store'

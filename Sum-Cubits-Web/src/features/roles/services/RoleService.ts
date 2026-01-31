@@ -8,7 +8,7 @@ import type { GetRoleResponse } from '@/features/roles/interfaces/GetRoleRespons
 
 import type { PermissionDto } from '@/features/permissions/models/PemissionDto'
 import type { RoleDto } from '@/features/roles/models/RoleDto'
-import type { ViewDto } from '@/features/views/models/ViewDto'
+import type { ViewDto } from '@/features/views/models/VistasDto'
 import type { PaginatedRoleListDto } from '@/features/roles/models/PaginatedRoleListDto'
 
 

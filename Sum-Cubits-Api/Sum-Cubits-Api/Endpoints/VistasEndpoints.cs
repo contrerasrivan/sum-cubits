@@ -6,12 +6,14 @@ namespace Sum_Cubits_Api.Endpoints
     {
         public static IEndpointRouteBuilder MapViewEndpoints(this IEndpointRouteBuilder app)
         {
-            var group = app.MapGroup("/views")
-                .WithTags("Views")
-                .WithOpenApi();
+            var group = app.MapGroup("/vistas")
+                .WithTags("Vistas")
+                .WithOpenApi()
+                .RequireAuthorization("Default"); ;
            
-            group.MapGet("/", GetViewList.Handle)
+            group.MapGet("", GetViewList.Handle)
                 .WithName("GetViewList")
+                .RequireAuthorization("Default")
                 .Produces<GetViewList.Response>(StatusCodes.Status200OK);
 
             return app;

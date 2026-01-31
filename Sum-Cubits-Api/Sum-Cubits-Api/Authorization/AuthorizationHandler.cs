@@ -14,7 +14,7 @@ namespace Sum_Cubits_Api.Authorization
         private readonly PermissionService permissionService;
         private readonly QueryUsuario queryUser;
 
-        public AuthorizationHandler(UserService _userService, PermissionService _permissionService, QueryUsuario _queryUsuario)
+        public AuthorizationHandler(UserService _userService, PermissionService _permissionService, QueryUsuario _queryUsuario, ILogger<AuthorizationHandler> logger)
         {
             userService = _userService;
             permissionService = _permissionService;
@@ -48,7 +48,7 @@ namespace Sum_Cubits_Api.Authorization
             {
                 var endpoint = httpContext.GetEndpoint();
                 var actionName = endpoint?.Metadata.GetMetadata<EndpointNameMetadata>()?.EndpointName;
-                if(endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>() is ControllerActionDescriptor descriptor)
+                if (endpoint?.Metadata.GetMetadata<ControllerActionDescriptor>() is ControllerActionDescriptor descriptor)
                 {
                     return descriptor.ActionName;
                 }
@@ -56,7 +56,7 @@ namespace Sum_Cubits_Api.Authorization
                 return actionName ?? httpContext.Request.RouteValues["action"]?.ToString() ?? httpContext.Request.Path.ToString();
             }
 
-            if(context.Resource is ActionContext actionContext)
+            if (context.Resource is ActionContext actionContext)
             {
                 return ((ControllerActionDescriptor)actionContext.ActionDescriptor).ActionName;
             }
@@ -76,7 +76,17 @@ namespace Sum_Cubits_Api.Authorization
                     return descriptor.ControllerName;
                 }
 
-                // Para Minimal APIs, extraer del route o usar un valor por defecto
+                // Para Minimal APIs, extraer del primer segmento de ruta después del dominio
+                var path = httpContext.Request.Path.ToString().Trim('/');
+                var segments = path.Split('/');
+
+                // Tomar el primer segmento como controlador (ej: /roles/1 -> "roles")
+                if (segments.Length > 0 && !string.IsNullOrEmpty(segments[0]))
+                {
+                    return char.ToUpper(segments[0][0]) + segments[0].Substring(1).ToLower(); // "Roles"
+                }
+
+                // Fallback
                 return httpContext.Request.RouteValues["controller"]?.ToString() ?? "Api";
             }
 

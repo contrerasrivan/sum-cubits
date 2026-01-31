@@ -10,15 +10,18 @@ namespace Sum_Cubits_Api.Endpoints
         {
             var group = app.MapGroup("/users")
                 .WithTags("Users")
-                .WithOpenApi();
+                .WithOpenApi()
+                .RequireAuthorization("Default"); ;
             //Get User List
             group.MapGet("/", GetUserList.Handle)
                 .WithName("GetUserList")
+                .RequireAuthorization("Default")
                 .Produces<GetUserList.Response>(StatusCodes.Status200OK);
 
             //Get User Rol Id
             group.MapGet("/rol", GetUserRolId.Handle)
                 .WithName("GetUserRolId")
+                .RequireAuthorization("Default")
                 .Produces<GetUserRolId.Response>(StatusCodes.Status200OK);
 
 

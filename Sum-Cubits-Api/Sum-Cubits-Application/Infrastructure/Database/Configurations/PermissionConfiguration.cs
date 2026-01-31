@@ -15,12 +15,9 @@ namespace Sum_Cubits_Application.Infrastructure.Database.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
             builder.Property(p => p.Controlador);
-            builder.Property(p => p.Created)
-                .HasColumnName("Fecha_Alta");
-            builder.Property(p => p.Update)
-                .HasColumnName("Fecha_Modificacion");
-            builder.Property(p => p.Update)
-                .HasColumnName("Fecha_Baja");
+            builder.Property(p => p.Fecha_Alta);
+            builder.Property(p => p.Fecha_Modificacion);
+            builder.Property(p => p.Fecha_Baja);
         }
     }
 }

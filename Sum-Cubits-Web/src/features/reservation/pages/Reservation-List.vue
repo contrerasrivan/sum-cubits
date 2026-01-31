@@ -13,11 +13,13 @@ import ReservationService from "@/features/reservation/services/ReservationServi
 
 // imprt Dtos
 import type { ReservaDto } from "@/features/reservation/models/ReservaDto";
+import type { TurnoDto } from "@/features/turns/models/TurnoDto";
 
 //import Request/Response
 import type { GetReservationListResponse } from "@/features/reservation/interfaces/GetReservationListResponse";
 import type { CreateReservationRequest } from "@/features/reservation/interfaces/CreateReservationRequest";
-import type { GetAvailableTurnsResponse, AvailableTurnoDto } from "@/features/reservation/interfaces/GetAvailableTurnsResponse";
+import type { GetAvailableTurnsRequest } from "@/features/reservation/interfaces/GetAvailableTurnsRequest";
+import type { DeleteReservationRequest } from "@/features/reservation/interfaces/DeleteReservationRequest";
 
 import { onMounted, ref, computed } from "vue";
 import { useAuth0 } from "@auth0/auth0-vue";
@@ -29,16 +31,16 @@ const auth = useAuth0();
 const { t } = useI18n();
 const router = useRouter();
 
+// service
+const reservationService = new ReservationService();
+
 //const 
 const showCreateModal = ref(false)
 const selectedReservation = ref<Date>();
 const selectedTurnos = ref<number[]>([]);
-const turnosDisponibles = ref<AvailableTurnoDto[]>([]);
+const turnosDisponibles = ref<TurnoDto[]>([]);
 const selectedSalonId = ref<number>(1); // falta api para obtener salones
 const minDate = ref<Date>(new Date());  
-
-// service
-const reservationService = new ReservationService();
 
 // State Reservation
 const reservations = ref<ReservaDto[]>([]);
@@ -50,16 +52,20 @@ const getReservationList = async () => {
     reservations.value = response.reservationDto
 }
 
-const deleteReservation = async (fechaReserva: string) => {
-    await reservationService.deleteReservation({ fechaReserva })
+const deleteReservation = async (request: DeleteReservationRequest) => {
+    await reservationService.deleteReservation(request)
     await getReservationList()
 }
 
 const createReservation = async (request: CreateReservationRequest) => {
     await reservationService.createReservation(request)
     await getReservationList()
-};
+}
 
+const getAvailableTurns = async (request: GetAvailableTurnsRequest) => {
+    const turnos = await reservationService.getAvailableTurns(request)
+    return turnos
+}
 const hasReservations = computed(() => reservations.value.length > 0);
 
 
@@ -82,14 +88,18 @@ const onDateSelect = async () => {
   
   const fechaReserva = formatDate(selectedReservation.value);
   
-  const turnos: GetAvailableTurnsResponse = await reservationService.getAvailableTurns({ 
-    fechaReserva, 
-    salonId: selectedSalonId.value 
-  });
+  // Obtener turnos y filtrar solo los disponibles
+  const turnos = await getAvailableTurns({
+    fechaReserva,
+    salonId: selectedSalonId.value
+  }) || [];
   
-  // Filtrar solo los turnos disponibles
-  turnosDisponibles.value = turnos.filter(turno => turno.disponibili);
-  selectedTurnos.value = [];
+  console.log('Turnos recibidos:', turnos);
+  
+  // Filtrar solo los turnos con disponibili === true
+  turnosDisponibles.value = turnos.filter((turno: any) => turno.disponibili === true);
+  
+  console.log('Turnos disponibles filtrados:', turnosDisponibles.value);
 };
 
 const goToHome = () => {
@@ -150,8 +160,8 @@ onMounted(async () => {
                   <div class="flex items-center gap-2">
                     <i class="pi pi-clock"></i>
                     <Tag 
-                      v-for="turno in reservation.turnosConfirmados" 
-                      :key="turno.reservaId" 
+                      v-for="turno in reservation.turnosDisponibles" 
+                      :key="turno.turnoId" 
                       severity="primary"
                       class="ml-1"
                     >
@@ -170,7 +180,7 @@ onMounted(async () => {
                         rounded
                         size="small"
                         severity="danger"
-                        @click="deleteReservation(reservation.fechaReserva)"
+                        @click="deleteReservation({ fechaReserva: reservation.fechaReserva })"
                       />
                     </div>
                   </div>
@@ -202,6 +212,7 @@ onMounted(async () => {
             :placeholder="t('Fecha Reserva')"
             class="ml-4"
             @date-select="onDateSelect"
+            @update:model-value="onDateSelect"
           />
         </div>
       </template>
@@ -215,7 +226,7 @@ onMounted(async () => {
         <MultiSelect
           v-model="selectedTurnos"
           :options="turnosDisponibles"
-          optionLabel="nombre"
+          optionLabel="nombreTurno"
           optionValue="turnoId"
           :placeholder="selectedReservation && turnosDisponibles.length ===0 ? t('Turnos no disponibles') : t('Turnos Disponibles')"
           class="w-min-full"

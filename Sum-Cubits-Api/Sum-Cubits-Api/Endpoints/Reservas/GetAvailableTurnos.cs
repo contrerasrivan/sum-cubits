@@ -6,7 +6,7 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
 {
     public static class GetAvailableTurnos
     {
-        public record Response(int turnoId, string nombre, bool disponibili);
+        public record Response(List<TurnoDto> TurnoDtos);
 
         public static async Task<IResult> Handle(
             [FromQuery] DateOnly fechaReserva,
@@ -28,7 +28,7 @@ namespace Sum_Cubits_Api.Endpoints.Reservas
             var turnsDisponibili = await queryReserva.GetTurnsDisponibili(fechaReserva, salonId, turnsPermitedIds);
 
             var response = allTurns
-                .Select(t => new Response(
+                .Select(t => new TurnoDto(
                     t.TurnoId,
                     t.NombreTurno,
                     turnsDisponibili.Contains(t.TurnoId)
